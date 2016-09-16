@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>GUI3.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+@font-face {
+    font-family: "Fira Code Retina";
+    src: url("http://joshk.in/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.ST0 {font-family: Fira Code Retina; font-style: italic}
+.comment {color: #969696}
+.ST3 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.keyword-directive {color: #0000e6}
+.character {color: #ce7b00}
+.ST2 {color: #009900}
+-->
+</style><link rel="stylesheet" href="http://joshk.in/static/css/code_style.css"></style>
+
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\gui\GUI3.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/**</span>
+ 2 <span class="comment"> * </span><span class="comment">This</span> <span class="comment">program</span> <span class="comment">extends</span> <span class="comment">off</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">idea</span> <span class="comment">of</span> <span class="comment">having</span> <span class="comment">a</span> <span class="comment">wrapper</span> <span class="comment">class</span> <span class="comment">for</span>
+ 3 <span class="comment"> * </span><span class="comment">JFrame</span><span class="comment">, </span><span class="comment">KFrame</span><span class="comment">, </span><span class="comment">found</span> <span class="comment">in</span> <span class="comment">GUI2</span>
+ 4 <span class="comment"> * </span><span class="comment">The</span> <span class="comment">frame</span> <span class="comment">actually</span> <span class="comment">has</span> <span class="comment">content</span><span class="comment">, 4 </span><span class="comment">buttons</span> <span class="comment">and</span> <span class="comment">a</span> <span class="comment">label</span>
+ 5  <span class="comment">*/</span>
+ 6
+ 7 <span class="keyword-directive">package</span> gui;
+ 8
+ 9 <span class="keyword-directive">import</span> javax.swing.JFrame;
+10 <span class="keyword-directive">import</span> javax.swing.SwingUtilities;
+11 <span class="keyword-directive">import</span> javax.swing.JButton;
+12 <span class="keyword-directive">import</span> javax.swing.JLabel;
+13 <span class="keyword-directive">import</span> java.awt.FlowLayout;
+14 <span class="keyword-directive">import</span> java.awt.Container;
+15
+16 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> GUI3 {
+17     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST0">main</span>(String args[]) {
+18         SwingUtilities.<span class="ST0">invokeLater</span>(<span class="keyword-directive">new</span> GUIThread());
+19     }
+20
+21     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">class</span> <span class="ST0">GUIThread</span> <span class="keyword-directive">implements</span> Runnable {
+22         <span class="keyword-directive">public</span> <span class="ST1">GUIThread</span>() {}
+23         @Override
+24         <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> run() {
+25             GUI3 gui = <span class="keyword-directive">new</span> GUI3();
+26         }
+27     }
+28     <span class="keyword-directive">public</span> <span class="ST1">GUI3</span>() {
+29         KFrame frame = <span class="keyword-directive">new</span> KFrame(<span class="character">&quot;</span><span class="character">GUI 3</span><span class="character">&quot;</span>);
+30     }
+31
+32     <span class="keyword-directive">private</span> <span class="keyword-directive">class</span> KFrame <span class="keyword-directive">extends</span> JFrame {
+33
+34         <span class="keyword-directive">private</span> JButton <span class="ST2">blueButton</span>;
+35         <span class="keyword-directive">private</span> JButton <span class="ST2">redButton</span>;
+36         <span class="keyword-directive">private</span> JButton <span class="ST2">greenButton</span>;
+37         <span class="keyword-directive">private</span> JButton <span class="ST2">yellowButton</span>;
+38         <span class="keyword-directive">private</span> JLabel <span class="ST2">colorLabel</span>;
+39
+40         <span class="keyword-directive">public</span> <span class="ST1">KFrame</span>(String title) {
+41             <span class="keyword-directive">super</span>(title);
+42             setSize(500, 300);
+43             setDefaultCloseOperation(JFrame.<span class="ST3">EXIT_ON_CLOSE</span>);
+44             addComponents(getContentPane());
+45             setVisible(<span class="keyword-directive">true</span>);
+46         }
+47
+48         <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> addComponents(Container contentPane) {
+49             <span class="ST2">blueButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Blue</span><span class="character">&quot;</span>);
+50             <span class="ST2">redButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Red</span><span class="character">&quot;</span>);
+51             <span class="ST2">greenButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Green</span><span class="character">&quot;</span>);
+52             <span class="ST2">yellowButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Yellow</span><span class="character">&quot;</span>);
+53             <span class="ST2">colorLabel</span> = <span class="keyword-directive">new</span> JLabel(<span class="character">&quot;</span><span class="character">Press a button..</span><span class="character">&quot;</span>);
+54             contentPane.setLayout(<span class="keyword-directive">new</span> FlowLayout());
+55             contentPane.add(<span class="ST2">blueButton</span>);
+56             contentPane.add(<span class="ST2">redButton</span>);
+57             contentPane.add(<span class="ST2">greenButton</span>);
+58             contentPane.add(<span class="ST2">yellowButton</span>);
+59             contentPane.add(<span class="ST2">colorLabel</span>);
+60         }
+61
+62     }
+63 }
+</pre></body>
+</html>

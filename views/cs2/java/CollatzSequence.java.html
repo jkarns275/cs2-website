@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>CollatzSequence.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+@font-face {
+    font-family: "FiraCode";
+    src: url("http://joshk.in/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}
+<!--
+body {color: #000000; background-color: #ffffff; font-family: FiraCode}
+pre {color: #000000; background-color: #ffffff; font-family: FiraCode}
+table {color: #000000; background-color: #e9e8e2; font-family: FiraCode}
+.ST2 {font-family: FiraCode; font-weight: bold; font-style: italic}
+.ST4 {font-family: FiraCode; font-style: italic}
+.ST0 {font-family: FiraCode; font-weight: bold}
+.comment {color: #969696}
+.ST3 {color: #ce7b00; font-family: FiraCode; font-weight: bold}
+.character {color: #ce7b00}
+.ST1 {color: #009900; font-family: FiraCode; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style><link rel="stylesheet" href="http://joshk.in/static/css/code_style.css"></style>
+
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\review\CollatzSequence.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/*</span>
+ 2 <span class="comment"> * Generate the Collatz sequence for a given integer</span>
+ 3 <span class="comment"> */</span>
+ 4 <span class="keyword-directive">package</span> review;
+ 5
+ 6 <span class="keyword-directive">import</span> java.util.Scanner;
+ 7
+ 8 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">CollatzSequence</span> {
+ 9
+10     <span class="comment">/*</span>
+11 <span class="comment">     * Generate the Collatz Sequence for a given positive integer,</span>
+12 <span class="comment">     */</span>
+13     <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> <span class="ST1">j</span> = 0;
+14     <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST2">collatz</span>(<span class="keyword-directive">int</span> n) {
+15         <span class="ST1">j</span>++;
+16         <span class="keyword-directive">if</span> (<span class="ST1">j</span> &gt; 10) {
+17             System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="ST3">\n</span><span class="character">&quot;</span>);
+18             <span class="ST1">j</span> = 1;
+19         }
+20         System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="character">%d</span><span class="ST3">\t</span><span class="character">&quot;</span>, n);
+21         <span class="comment">//if ((n &amp; 1) == 0) collatz(n / 2);</span>
+22         <span class="keyword-directive">if</span> ((n % 2) == 0) <span class="ST4">collatz</span>(n / 2);       <span class="comment">// If n is even the next term is n / 2</span>
+23         <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (n == 1);                       <span class="comment">// If n is 0 or 1 we&#39;re done</span>
+24         <span class="keyword-directive">else</span> <span class="ST4">collatz</span>(n * 3 + 1);                <span class="comment">// If n is odd the next term is n * 3 + 1</span>
+25      }
+26
+27     <span class="comment">/*</span>
+28 <span class="comment">     * Prompts the user for a positive integer and will loop until a valid integer is supplied</span>
+29 <span class="comment">     */</span>
+30     <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> <span class="ST2">getPositiveNumber</span>() {
+31         Scanner scanner = <span class="keyword-directive">new</span> Scanner(System.<span class="ST1">in</span>);
+32         <span class="keyword-directive">int</span> i = 0;
+33         System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="ST3">\n</span><span class="character">Please enter a positive integer: </span><span class="character">&quot;</span>);
+34         <span class="keyword-directive">try</span> {
+35             i = Integer.<span class="ST4">parseInt</span>(scanner.next());
+36         } <span class="keyword-directive">catch</span> (NumberFormatException e) {
+37             System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="ST3">\n</span><span class="character">Invalid number, please enter a positive integer: </span><span class="character">&quot;</span>);
+38             <span class="keyword-directive">return</span> <span class="ST4">getPositiveNumber</span>();
+39         }
+40         <span class="keyword-directive">if</span> (i &gt; 0)  <span class="keyword-directive">return</span> i;
+41         <span class="keyword-directive">else</span>        System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="ST3">\n</span><span class="character">Invalid number, please enter a positive integer: </span><span class="character">&quot;</span>);
+42         <span class="keyword-directive">return</span> <span class="ST4">getPositiveNumber</span>();
+43     }
+44
+45      <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST2">main</span>(String[] args) {
+46          <span class="keyword-directive">int</span> i = <span class="ST4">getPositiveNumber</span>();
+47          <span class="ST4">collatz</span>(i);
+48      }
+49
+50
+51 }
+52
+</pre></body>
+</html>

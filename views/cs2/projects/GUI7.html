@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://joshk.in/cs2/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Josh Karns">
+  <title>Josh Karns</title>
+  <script src="./index_files/jquery.min.js"></script>
+  <style type="text/css">
+  <!--
+  body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+  pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+  table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+  .ST0 {font-family: Fira Code Retina; font-style: italic}
+  .ST1 {font-family: Fira Code Retina; font-weight: bold}
+  .character {color: #ce7b00}
+  .keyword-directive {color: #0000e6}
+  -->
+  </style>
+  <style src="/static/css/code_style.css"></style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- Fixed navbar -->
+    <div class="container">
+      <div class="jumbotron" style="margin-top: 2em">
+        <h2>
+          GUI 7<hr>
+        </h2>
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h3>GUI7.java</h3>
+          </a>
+          <div class="panel panel-default">
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+<pre>
+ 1 <span class="keyword-directive">package</span> gui;
+ 2
+ 3 <span class="keyword-directive">import</span> frames.KFrame7;
+ 4 <span class="keyword-directive">import</span> javax.swing.SwingUtilities;
+ 5
+ 6 <span class="comment">/**</span>
+ 7 <span class="comment"> *</span>
+ 8 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">jkarn</span>
+ 9  <span class="comment">*/</span>
+10 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> GUI7 {
+11     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST1">main</span>(String args[]) {
+12         SwingUtilities.<span class="ST1">invokeLater</span>(<span class="keyword-directive">new</span> GUIThread());
+13     }
+14
+15     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">class</span> <span class="ST1">GUIThread</span> <span class="keyword-directive">implements</span> Runnable {
+16         <span class="keyword-directive">public</span> <span class="ST2">GUIThread</span>() {}
+17         @Override
+18         <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> run() {
+19             GUI7 gui = <span class="keyword-directive">new</span> GUI7();
+20         }
+21     }
+22     <span class="keyword-directive">public</span> <span class="ST2">GUI7</span>() {
+23         KFrame7 frame = <span class="keyword-directive">new</span> KFrame7(<span class="character">&quot;</span><span class="character">GUI 7</span><span class="character">&quot;</span>);
+24     }
+25 }
+26
+</pre>
+            </div>
+          </div>
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h3>KFrame7.java</h3>
+          </a>
+          <div class="panel panel-default">
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+<pre>
+ 1 <span class="keyword-directive">package</span> frames;
+ 2
+ 3
+ 4 <span class="keyword-directive">import</span> java.awt.BorderLayout;
+ 5 <span class="keyword-directive">import</span> java.awt.Color;
+ 6 <span class="keyword-directive">import</span> java.awt.Container;
+ 7 <span class="keyword-directive">import</span> java.awt.FlowLayout;
+ 8 <span class="keyword-directive">import</span> java.awt.event.ActionEvent;
+ 9 <span class="keyword-directive">import</span> java.awt.event.ActionListener;
+10 <span class="keyword-directive">import</span> javax.swing.JButton;
+11 <span class="keyword-directive">import</span> javax.swing.JFrame;
+12 <span class="keyword-directive">import</span> javax.swing.JPanel;
+13 <span class="keyword-directive">import</span> javax.swing.JTextField;
+14 <span class="keyword-directive">import</span> utilities.Random;
+15
+16 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> KFrame7 <span class="keyword-directive">extends</span> JFrame <span class="keyword-directive">implements</span> ActionListener {
+17     JPanel <span class="ST0">reflector</span>;
+18     JButton <span class="ST0">blueButton</span>,
+19             <span class="ST0">redButton</span>,
+20             <span class="ST0">greenButton</span>,
+21             <span class="ST0">yellowButton</span>,
+22             <span class="ST0">colorButton</span>;
+23     JTextField <span class="ST0">input</span>;
+24
+25     <span class="keyword-directive">public</span> <span class="ST1">KFrame7</span>(String title) {
+26         <span class="keyword-directive">super</span>(title);
+27         setSize(500, 300);
+28         setDefaultCloseOperation(JFrame.<span class="ST2">EXIT_ON_CLOSE</span>);
+29         addComponents(getContentPane());
+30         addListeners();
+31         setVisible(<span class="keyword-directive">true</span>);
+32     }
+33
+34     <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> addComponents(Container contentPane) {
+35         <span class="ST0">blueButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Blue</span><span class="character">&quot;</span>);
+36         <span class="ST0">redButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Red</span><span class="character">&quot;</span>);
+37         <span class="ST0">greenButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Green</span><span class="character">&quot;</span>);
+38         <span class="ST0">yellowButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Yellow</span><span class="character">&quot;</span>);
+39         <span class="ST0">colorButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Color</span><span class="character">&quot;</span>);
+40         JPanel controlPanel = <span class="keyword-directive">new</span> JPanel();
+41         controlPanel.setLayout(<span class="keyword-directive">new</span> FlowLayout());
+42         controlPanel.add(<span class="ST0">blueButton</span>);
+43         controlPanel.add(<span class="ST0">redButton</span>);
+44         controlPanel.add(<span class="ST0">greenButton</span>);
+45         controlPanel.add(<span class="ST0">yellowButton</span>);
+46         controlPanel.add(<span class="ST0">colorButton</span>);
+47
+48         <span class="ST0">reflector</span> = <span class="keyword-directive">new</span> JPanel();
+49
+50         <span class="ST0">input</span> = <span class="keyword-directive">new</span> JTextField();
+51
+52         contentPane.setLayout(<span class="keyword-directive">new</span> BorderLayout());
+53         contentPane.add(controlPanel, BorderLayout.<span class="ST2">NORTH</span>);
+54         contentPane.add(<span class="ST0">reflector</span>, BorderLayout.<span class="ST2">CENTER</span>);
+55         contentPane.add(<span class="ST0">input</span>, BorderLayout.<span class="ST2">SOUTH</span>);
+56     }
+57
+58     <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> addListeners() {
+59         <span class="ST0">blueButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+60         <span class="ST0">redButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+61         <span class="ST0">greenButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+62         <span class="ST0">yellowButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+63         <span class="ST0">colorButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+64         <span class="ST0">input</span>.addActionListener(<span class="keyword-directive">this</span>);
+65     }
+66
+67     <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> actionPerformed(ActionEvent event) {
+68         String command = event.getActionCommand();
+69         <span class="keyword-directive">if</span> (event.getSource() <span class="keyword-directive">instanceof</span> JTextField) {
+70             <span class="ST0">input</span>.setText(<span class="character">&quot;&quot;</span>);
+71         }
+72         <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">red</span><span class="character">&quot;</span>)) {
+73             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">RED</span>);
+74         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">green</span><span class="character">&quot;</span>)) {
+75             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">GREEN</span>);
+76         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">blue</span><span class="character">&quot;</span>)) {
+77             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">BLUE</span>);
+78         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">yellow</span><span class="character">&quot;</span>)) {
+79             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">YELLOW</span>);
+80         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">color</span><span class="character">&quot;</span>)) {
+81             <span class="ST0">reflector</span>.setBackground(Random.<span class="ST3">color</span>());
+82         }
+83     }
+84 }
+85
+</pre>
+            </div>
+          </div>
+        </div>
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h3>Random.java</h3>
+        </a>
+        <div class="panel panel-default">
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+<pre>
+ 1 <span class="keyword-directive">package</span> utilities;
+ 2
+ 3 <span class="keyword-directive">import</span> java.awt.Color;
+ 4
+ 5 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> Random {
+ 6
+ 7     <span class="keyword-directive">static</span> <span class="keyword-directive">public</span> Color <span class="ST0">color</span>() {
+ 8         <span class="keyword-directive">return</span> <span class="keyword-directive">new</span> Color((<span class="keyword-directive">int</span>)(Math.<span class="ST0">random</span>() *  2147483647));
+ 9     }
+10 }
+11
+</pre>
+          </div>
+        </div>
+      </div>
+        <style>
+          p {
+            text-indent: 1em;
+          }
+        </style>
+      </div>
+      <div style="padding-top: 1em; text-align: center; margin-bottom: 2em; padding-bottom: 1em;" class=".footer" id="footer">
+        <div class="container">
+                    <p>Email: <a href="mailto:jkarns@oswego.edu">jkarns@oswego.edu</a><br></p>
+          <p>© 2016 Josh Karns</p>
+        </div>
+      </div>
+    </div>
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+    html {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    body, html {
+  background-color: #C5574D;
+  position: relative;
+  min-height: 100%;
+  color: black ;
+}
+
+h1, h2, h3 {
+  text-shadow : 0 0 0 black;
+}
+
+body {
+  background-image: url("http://www.joshk.in/img/Cold Evening.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  z-index: 0;
+  min-height: 100%;
+}
+.navbar {
+  font-size: 110%;
+}
+/* Wrapper for page content to push down footer */
+#wrapper {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+.panel-heading {
+  background-color: #C5574D;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  background-color: #eee;
+  padding-bottom: .8em;
+  width: 100%;
+  bottom: 0px;
+}
+
+.btn, .btn-lg, .btn-md {
+  border-radius: 0;
+}
+
+.jumbotron {
+  border-radius: 0 !important;
+  padding-top: 3em;
+  opacity: .9;
+}
+.jumbotron > p, .jumbotron > h1, .jumbotron > h2 {
+  color: black !important;
+}
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 100%;
+  align: left;
+  background-color:#000;
+  height: 1px;
+}
+
+.p {
+  text-indent: 3em;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  color: white;
+  background-color: #f5f5f5;
+}
+
+#wrapper {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+body:before, body:after {
+    content: "";
+    position: fixed;
+    background: #C5574D;
+    left: 0;
+    right: 0;
+    height: 20px;
+}
+body:before {
+    top: 0;
+}
+body:after {
+    bottom: 0;
+    z-index: -1;
+}
+</style>
+  <script type="text/javascript">/* <![CDATA[ */(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script>
+
+</div></body></html>

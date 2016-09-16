@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "FiraCode";
+    src: url("http://joshk.in/static/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}

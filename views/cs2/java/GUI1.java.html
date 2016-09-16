@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>GUI1.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+@font-face {
+    font-family: "Fira Code Retina";
+    src: url("http://joshk.in/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.ST0 {font-family: Fira Code Retina; font-style: italic}
+.comment {color: #969696}
+.ST2 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.keyword-directive {color: #0000e6}
+.character {color: #ce7b00}
+-->
+</style><link rel="stylesheet" href="http://joshk.in/static/css/code_style.css"></style>
+
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\gui\GUI1.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/**</span>
+ 2 <span class="comment"> * </span><span class="comment">This</span> <span class="comment">program</span> <span class="comment">simply</span> <span class="comment">displays</span> <span class="comment">a</span><span class="comment"> 500</span><span class="comment">x300</span> <span class="comment">window</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">screen</span> <span class="comment">using</span>
+ 3 <span class="comment"> * </span><span class="comment">a</span> <span class="comment">JFrame</span>
+ 4  <span class="comment">*/</span>
+ 5
+ 6 <span class="keyword-directive">package</span> gui;
+ 7
+ 8 <span class="keyword-directive">import</span> javax.swing.JFrame;
+ 9 <span class="keyword-directive">import</span> javax.swing.SwingUtilities;
+10
+11 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> GUI1 {
+12     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST0">main</span>(String args[]) {
+13         SwingUtilities.<span class="ST0">invokeLater</span>(<span class="keyword-directive">new</span> GUIThread());
+14     }
+15
+16     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">class</span> <span class="ST0">GUIThread</span> <span class="keyword-directive">implements</span> Runnable {
+17         <span class="keyword-directive">public</span> <span class="ST1">GUIThread</span>() {}
+18         @Override
+19         <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> run() {
+20             GUI1 gui = <span class="keyword-directive">new</span> GUI1();
+21         }
+22     }
+23     <span class="keyword-directive">public</span> <span class="ST1">GUI1</span>() {
+24         JFrame frame = <span class="keyword-directive">new</span> JFrame(<span class="character">&quot;</span><span class="character">GUI 1</span><span class="character">&quot;</span>);
+25         frame.setSize(500, 300);
+26         frame.setDefaultCloseOperation(JFrame.<span class="ST2">EXIT_ON_CLOSE</span>);
+27         frame.setVisible(<span class="keyword-directive">true</span>);
+28     }
+29 }
+</pre></body>
+</html>

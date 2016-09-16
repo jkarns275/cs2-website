@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>NumberClassification.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+@font-face {
+    font-family: "FiraCode";
+    src: url("http://joshk.in/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}
+<!--
+body {color: #000000; background-color: #ffffff; font-family: FiraCode}
+pre {color: #000000; background-color: #ffffff; font-family: FiraCode}
+table {color: #000000; background-color: #e9e8e2; font-family: FiraCode}
+.ST0 {font-family: FiraCode; font-style: italic}
+.comment {color: #969696}
+.ST1 {color: #009900; font-family: FiraCode; font-style: italic}
+.keyword-directive {color: #0000e6}
+.character {color: #ce7b00}
+.ST2 {color: #ce7b00; font-family: FiraCode; font-weight: bold}
+-->
+</style><link rel="stylesheet" href="http://joshk.in/static/css/code_style.css"></style>
+
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\review\NumberClassification.java</td></tr></table>
+<pre>
+ 1 <span class="keyword-directive">package</span> review;
+ 2
+ 3 <span class="keyword-directive">import</span> java.util.ArrayList;
+ 4 <span class="keyword-directive">import</span> java.util.Random;
+ 5
+ 6 <span class="comment">/*</span>
+ 7 <span class="comment"> *  This program generates 25 random 3 digit positive integers, and classifies </span>
+ 8 <span class="comment"> * seperates them into the following categories:</span>
+ 9 <span class="comment"> *  1. Numbers with only odd digits</span>
+10 <span class="comment"> *  2. Numbers with only even digits</span>
+11 <span class="comment"> *  3. Numbers with exactly two identical digits</span>
+12 <span class="comment"> *  4. Numbers with mixed digits</span>
+13 <span class="comment"> * The classification is done with priority as listed (1 first, 4 last)</span>
+14 <span class="comment"> */</span>
+15
+16 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> NumberClassification {
+17
+18     <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> <span class="ST0">hundredsPlace</span>(<span class="keyword-directive">int</span> n) { <span class="keyword-directive">return</span> n / 100; }
+19     <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> <span class="ST0">tensPlace</span>(<span class="keyword-directive">int</span> n)     { <span class="keyword-directive">return</span> (n % 100) / 10; }
+20     <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> <span class="ST0">onesPlace</span>(<span class="keyword-directive">int</span> n)     { <span class="keyword-directive">return</span> n % 10; }
+21
+22     <span class="keyword-directive">static</span> <span class="keyword-directive">boolean</span> <span class="ST0">isOnlyOddDigits</span>(<span class="keyword-directive">int</span> n) {
+23         <span class="keyword-directive">return</span>  <span class="ST0">hundredsPlace</span>(n) % 2 == 1 &amp;&amp;
+24                 <span class="ST0">tensPlace</span>(n) % 2 == 1 &amp;&amp;
+25                 <span class="ST0">onesPlace</span>(n) % 2 == 1;
+26     }
+27
+28     <span class="keyword-directive">static</span> <span class="keyword-directive">boolean</span> <span class="ST0">isOnlyEvenDigits</span>(<span class="keyword-directive">int</span> n) {
+29         <span class="keyword-directive">return</span> <span class="ST0">hundredsPlace</span>(n) % 2 == 0 &amp;&amp; <span class="ST0">tensPlace</span>(n) % 2 == 0 &amp;&amp; <span class="ST0">onesPlace</span>(n) % 2 == 0;
+30     }
+31
+32     <span class="keyword-directive">static</span> <span class="keyword-directive">boolean</span> <span class="ST0">hasTwoIdenticleDigits</span>(<span class="keyword-directive">int</span> n) {
+33         <span class="keyword-directive">int</span> hundreds = <span class="ST0">hundredsPlace</span>(n),
+34             tens = <span class="ST0">tensPlace</span>(n),
+35             ones = <span class="ST0">onesPlace</span>(n);
+36         <span class="keyword-directive">return</span> hundreds == tens ^ tens == ones ^ ones == hundreds;
+37     }
+38
+39     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST0">main</span>(String[] args) {
+40         Random r = <span class="keyword-directive">new</span> Random(System.<span class="ST0">currentTimeMillis</span>());
+41
+42         ArrayList&lt;Integer&gt; odds = <span class="keyword-directive">new</span> ArrayList&lt;&gt;();
+43         ArrayList&lt;Integer&gt; evens = <span class="keyword-directive">new</span> ArrayList&lt;&gt;();
+44         ArrayList&lt;Integer&gt; repeats = <span class="keyword-directive">new</span> ArrayList&lt;&gt;();
+45         ArrayList&lt;Integer&gt; mixedDigits = <span class="keyword-directive">new</span> ArrayList&lt;&gt;();
+46
+47         System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="character">The numbers: </span><span class="character">&quot;</span>);
+48         <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 0; i &lt; 25; i++) {
+49             <span class="keyword-directive">int</span> n = 100 + (Math.<span class="ST0">abs</span>(r.nextInt()) % 900);
+50             System.<span class="ST1">out</span>.printf(<span class="character">&quot;</span><span class="character">%d </span><span class="character">&quot;</span>, n);
+51             <span class="keyword-directive">if</span> (<span class="ST0">isOnlyOddDigits</span>(n))             odds.add(n);
+52             <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (<span class="ST0">isOnlyEvenDigits</span>(n))       evens.add(n);
+53             <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (<span class="ST0">hasTwoIdenticleDigits</span>(n))  repeats.add(n);
+54             <span class="keyword-directive">else</span>                                mixedDigits.add(n);
+55         }
+56
+57         System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="ST2">\n</span><span class="character">The odd digit numbers: </span><span class="character">&quot;</span>);
+58         odds.forEach(x -&gt; System.<span class="ST1">out</span>.print(x + <span class="character">&quot;</span> <span class="character">&quot;</span>));
+59
+60         System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="ST2">\n</span><span class="character">The even digit numbers: </span><span class="character">&quot;</span>);
+61         evens.forEach(x -&gt; System.<span class="ST1">out</span>.print(x + <span class="character">&quot;</span> <span class="character">&quot;</span>));
+62
+63         System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="ST2">\n</span><span class="character">The mixed digit numbers: </span><span class="character">&quot;</span>);
+64         mixedDigits.forEach(x -&gt; System.<span class="ST1">out</span>.print(x + <span class="character">&quot;</span> <span class="character">&quot;</span>));
+65
+66         System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="ST2">\n</span><span class="character">The pairs: </span><span class="character">&quot;</span>);
+67         repeats.forEach(x -&gt; System.<span class="ST1">out</span>.print(x + <span class="character">&quot;</span> <span class="character">&quot;</span>));
+68     }
+69
+70 }
+71
+</pre></body>
+</html>

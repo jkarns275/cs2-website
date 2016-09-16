@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>KFrame7.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.ST0 {color: #009900}
+.character {color: #ce7b00}
+.ST2 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\frames\KFrame7.java</td></tr></table>
+<pre>
+ 1 <span class="keyword-directive">package</span> frames;
+ 2 
+ 3 
+ 4 <span class="keyword-directive">import</span> java.awt.BorderLayout;
+ 5 <span class="keyword-directive">import</span> java.awt.Color;
+ 6 <span class="keyword-directive">import</span> java.awt.Container;
+ 7 <span class="keyword-directive">import</span> java.awt.FlowLayout;
+ 8 <span class="keyword-directive">import</span> java.awt.event.ActionEvent;
+ 9 <span class="keyword-directive">import</span> java.awt.event.ActionListener;
+10 <span class="keyword-directive">import</span> javax.swing.JButton;
+11 <span class="keyword-directive">import</span> javax.swing.JFrame;
+12 <span class="keyword-directive">import</span> javax.swing.JPanel;
+13 <span class="keyword-directive">import</span> javax.swing.JTextField;
+14 <span class="keyword-directive">import</span> utilities.Random;
+15 
+16 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> KFrame7 <span class="keyword-directive">extends</span> JFrame <span class="keyword-directive">implements</span> ActionListener {
+17     JPanel <span class="ST0">reflector</span>;
+18     JButton <span class="ST0">blueButton</span>,
+19             <span class="ST0">redButton</span>,
+20             <span class="ST0">greenButton</span>,
+21             <span class="ST0">yellowButton</span>,
+22             <span class="ST0">colorButton</span>;
+23     JTextField <span class="ST0">input</span>;
+24 
+25     <span class="keyword-directive">public</span> <span class="ST1">KFrame7</span>(String title) {
+26         <span class="keyword-directive">super</span>(title);
+27         setSize(500, 300);
+28         setDefaultCloseOperation(JFrame.<span class="ST2">EXIT_ON_CLOSE</span>);
+29         addComponents(getContentPane());
+30         addListeners();
+31         setVisible(<span class="keyword-directive">true</span>);
+32     }
+33     
+34     <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> addComponents(Container contentPane) {
+35         <span class="ST0">blueButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Blue</span><span class="character">&quot;</span>);
+36         <span class="ST0">redButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Red</span><span class="character">&quot;</span>);
+37         <span class="ST0">greenButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Green</span><span class="character">&quot;</span>);
+38         <span class="ST0">yellowButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Yellow</span><span class="character">&quot;</span>);
+39         <span class="ST0">colorButton</span> = <span class="keyword-directive">new</span> JButton(<span class="character">&quot;</span><span class="character">Color</span><span class="character">&quot;</span>);
+40         JPanel controlPanel = <span class="keyword-directive">new</span> JPanel();
+41         controlPanel.setLayout(<span class="keyword-directive">new</span> FlowLayout());
+42         controlPanel.add(<span class="ST0">blueButton</span>);
+43         controlPanel.add(<span class="ST0">redButton</span>);
+44         controlPanel.add(<span class="ST0">greenButton</span>);
+45         controlPanel.add(<span class="ST0">yellowButton</span>);
+46         controlPanel.add(<span class="ST0">colorButton</span>);
+47         
+48         <span class="ST0">reflector</span> = <span class="keyword-directive">new</span> JPanel();
+49         
+50         <span class="ST0">input</span> = <span class="keyword-directive">new</span> JTextField();
+51         
+52         contentPane.setLayout(<span class="keyword-directive">new</span> BorderLayout());
+53         contentPane.add(controlPanel, BorderLayout.<span class="ST2">NORTH</span>);
+54         contentPane.add(<span class="ST0">reflector</span>, BorderLayout.<span class="ST2">CENTER</span>);
+55         contentPane.add(<span class="ST0">input</span>, BorderLayout.<span class="ST2">SOUTH</span>);
+56     }
+57     
+58     <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> addListeners() {
+59         <span class="ST0">blueButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+60         <span class="ST0">redButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+61         <span class="ST0">greenButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+62         <span class="ST0">yellowButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+63         <span class="ST0">colorButton</span>.addActionListener(<span class="keyword-directive">this</span>);
+64         <span class="ST0">input</span>.addActionListener(<span class="keyword-directive">this</span>);
+65     }
+66     
+67     <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> actionPerformed(ActionEvent event) {
+68         String command = event.getActionCommand();
+69         <span class="keyword-directive">if</span> (event.getSource() <span class="keyword-directive">instanceof</span> JTextField) {
+70             <span class="ST0">input</span>.setText(<span class="character">&quot;&quot;</span>);
+71         }
+72         <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">red</span><span class="character">&quot;</span>)) {
+73             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">RED</span>);
+74         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">green</span><span class="character">&quot;</span>)) {
+75             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">GREEN</span>);
+76         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">blue</span><span class="character">&quot;</span>)) {
+77             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">BLUE</span>);
+78         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">yellow</span><span class="character">&quot;</span>)) {
+79             <span class="ST0">reflector</span>.setBackground(Color.<span class="ST2">YELLOW</span>);
+80         } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (command.equalsIgnoreCase(<span class="character">&quot;</span><span class="character">color</span><span class="character">&quot;</span>)) {
+81             <span class="ST0">reflector</span>.setBackground(Random.<span class="ST3">color</span>());
+82         }
+83     }
+84 }
+85 
+</pre></body>
+</html>

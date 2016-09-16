@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>LongerWords.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+@font-face {
+    font-family: "FiraCode";
+    src: url("http://joshk.in/fonts/FiraCode-Retina.ttf") format("truetype");
+}
+*.customfont {
+    font-family: "FiraCode", Verdana, Tahoma;
+}
+<!--
+body {color: #000000; background-color: #ffffff; font-family: FiraCode}
+pre {color: #000000; background-color: #ffffff; font-family: FiraCode}
+table {color: #000000; background-color: #e9e8e2; font-family: FiraCode}
+.ST1 {font-family: FiraCode; font-weight: bold; font-style: italic}
+.ST4 {font-family: FiraCode; font-style: italic}
+.ST0 {font-family: FiraCode; font-weight: bold}
+.comment {color: #969696}
+.ST5 {color: #ce7b00; font-family: FiraCode; font-weight: bold}
+.ST3 {color: #009900}
+.character {color: #ce7b00}
+.ST2 {color: #009900; font-family: FiraCode; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style><link rel="stylesheet" href="http://joshk.in/static/css/code_style.css"></style>
+
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\jkarn\Documents\NetBeansProjects\CS2F16\src\review\LongerWords.java</td></tr></table>
+<pre>
+ 1 <span class="keyword-directive">package</span> review;
+ 2
+ 3 <span class="keyword-directive">import</span> java.util.Scanner;
+ 4
+ 5 <span class="comment">/*</span>
+ 6 <span class="comment"> *  This program prompts the user for a sentence, and then finds the average</span>
+ 7 <span class="comment"> * word length in that sentence. It will then print all words with a higher than</span>
+ 8 <span class="comment"> * average length.</span>
+ 9 <span class="comment"> */</span>
+10 <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">LongerWords</span> {
+11
+12     <span class="keyword-directive">static</span> String[] <span class="ST1">getSentence</span>() {
+13         System.<span class="ST2">out</span>.printf(<span class="character">&quot;</span><span class="character">Please enter a sentance: </span><span class="character">&quot;</span>);
+14         Scanner s = <span class="keyword-directive">new</span> Scanner(System.<span class="ST2">in</span>);
+15         <span class="keyword-directive">return</span> s.nextLine().split(<span class="character">&quot;</span> <span class="character">&quot;</span>);
+16     }
+17
+18     <span class="keyword-directive">static</span> <span class="keyword-directive">float</span> <span class="ST1">getAverageLength</span>(String[] words) {
+19         <span class="keyword-directive">float</span> average = 0.f;
+20         <span class="keyword-directive">for</span> (String word : words) average += word.length();
+21         average /= words.<span class="ST3">length</span>;
+22         <span class="keyword-directive">return</span> average;
+23     }
+24
+25     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> <span class="ST1">main</span>(String[] args) {
+26         String[] words = <span class="ST4">getSentence</span>();
+27         <span class="keyword-directive">float</span> average = <span class="ST4">getAverageLength</span>(words);
+28         System.<span class="ST2">out</span>.printf(<span class="character">&quot;</span><span class="character">The longer words: </span><span class="ST5">\n</span><span class="character">&quot;</span>);
+29         <span class="keyword-directive">for</span> (String word : words)
+30             <span class="keyword-directive">if</span> ((<span class="keyword-directive">float</span>) word.length() &gt; average)
+31                 System.<span class="ST2">out</span>.printf(<span class="character">&quot;</span><span class="character">%s</span><span class="ST5">\n</span><span class="character">&quot;</span>, word);
+32     }
+33
+34 }
+35
+</pre></body>
+</html>
