@@ -31,5 +31,5 @@ get "/cs2/:dir/:file" do |env|
     "But there was nothing to be found..."
   end
 end
-
+Kemal.config.port = 80
 Kemal.run
