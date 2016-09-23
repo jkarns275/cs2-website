@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>GUI8P.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST2 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/gui/GUI8P.java</td></tr></table>
+<pre>
+ 1 <span class="literal">package</span> gui;
+ 2 
+ 3 <span class="literal">import</span> frames.KFrame8P;
+ 4 <span class="literal">import</span> javax.swing.SwingUtilities;
+ 5 
+ 6 <span class="comment">/**</span>
+ 7 <span class="comment"> *</span>
+ 8 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">Joshua</span> <span class="comment">Karns</span>
+ 9  <span class="comment">*/</span>
+10 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">GUI8P</span> {
+11     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String args[]) {
+12         SwingUtilities.<span class="ST3">invokeLater</span>(<span class="literal">new</span> GUIThread());
+13     }
+14     
+15     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">class</span> <span class="ST2">GUIThread</span> <span class="literal">implements</span> Runnable {
+16         <span class="literal">public</span> <span class="ST1">GUIThread</span>() {} 
+17         @Override
+18         <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">run</span>() {
+19             GUI8P gui = <span class="literal">new</span> GUI8P();
+20         }
+21     }
+22     <span class="literal">public</span> <span class="ST1">GUI8P</span>() {
+23         KFrame8P frame = <span class="literal">new</span> KFrame8P(<span class="string">&quot;</span><span class="string">GUI 8P</span><span class="string">&quot;</span>);
+24     }
+25 }
+26 
+</pre></body>
+</html>
