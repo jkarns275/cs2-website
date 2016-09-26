@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>GUI8.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST2 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/gui/GUI8.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/*</span>
+ 2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+ 3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+ 4 <span class="comment"> * and open the template in the editor.</span>
+ 5 <span class="comment"> */</span>
+ 6 <span class="literal">package</span> gui;
+ 7 
+ 8 <span class="literal">import</span> frames.KFrame8;
+ 9 <span class="literal">import</span> javax.swing.SwingUtilities;
+10 
+11 <span class="comment">/**</span>
+12 <span class="comment"> *</span>
+13 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+14  <span class="comment">*/</span>
+15 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">GUI8</span> {
+16     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String args[]) {
+17         SwingUtilities.<span class="ST3">invokeLater</span>(<span class="literal">new</span> GUIThread());
+18     }
+19     
+20     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">class</span> <span class="ST2">GUIThread</span> <span class="literal">implements</span> Runnable {
+21         <span class="literal">public</span> <span class="ST1">GUIThread</span>() {} 
+22         @Override
+23         <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">run</span>() {
+24             GUI8 gui = <span class="literal">new</span> GUI8();
+25         }
+26     }
+27     <span class="literal">public</span> <span class="ST1">GUI8</span>() {
+28         KFrame8 frame = <span class="literal">new</span> KFrame8(<span class="string">&quot;</span><span class="string">GUI 8</span><span class="string">&quot;</span>);
+29     }
+30 }
+31 
+</pre></body>
+</html>
