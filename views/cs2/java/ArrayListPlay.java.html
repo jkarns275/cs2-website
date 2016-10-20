@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ArrayListPlay.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST2 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST4 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/linearlists/ArrayListPlay.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/*</span>
+ 2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+ 3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+ 4 <span class="comment"> * and open the template in the editor.</span>
+ 5 <span class="comment"> */</span>
+ 6 <span class="literal">package</span> linearlists;
+ 7 
+ 8 <span class="literal">import</span> java.util.ArrayList;
+ 9 <span class="literal">import</span> java.util.Arrays;
+10 <span class="literal">import</span> simplethings.Name;
+11 <span class="literal">import</span> someshapes.Triangle;
+12 
+13 <span class="comment">/**</span>
+14 <span class="comment"> *</span>
+15 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+16  <span class="comment">*/</span>
+17 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">ArrayListPlay</span> {
+18     
+19     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String[] args) {
+20         ArrayList songs = <span class="ST3">createSongList</span>();
+21         <span class="ST3">display</span>(<span class="string">&quot;</span><span class="string">The songs ... </span><span class="string">&quot;</span>, songs);
+22         ArrayList actors = <span class="ST3">createActorList</span>();
+23         <span class="ST3">display</span>(<span class="string">&quot;</span><span class="string">The actors ... </span><span class="string">&quot;</span>, actors);
+24         ArrayList triangles = <span class="ST3">createTriangleList</span>();
+25         <span class="ST3">display</span>(<span class="string">&quot;</span><span class="string">The triangles ... </span><span class="string">&quot;</span>, triangles);
+26         
+27         <span class="ST3">displayTitles</span>(songs);
+28         <span class="ST3">displayInitials</span>(actors);
+29         <span class="ST3">displayAreas</span>(triangles);
+30     }
+31 
+32     <span class="literal">private</span> <span class="literal">static</span> ArrayList <span class="ST2">createSongList</span>() {
+33         <span class="literal">return</span> <span class="literal">new</span> ArrayList&lt;&gt;(Arrays.<span class="ST3">asList</span>(
+34         <span class="string">&quot;</span><span class="string">The Calendar</span><span class="string">&quot;</span>,
+35         <span class="string">&quot;</span><span class="string">Always</span><span class="string">&quot;</span>,
+36         <span class="string">&quot;</span><span class="string">Death Of A Bachelor</span><span class="string">&quot;</span>,
+37         <span class="string">&quot;</span><span class="string">No More Bad Days</span><span class="string">&quot;</span>,
+38         <span class="string">&quot;</span><span class="string">Pink + White</span><span class="string">&quot;</span>,
+39         <span class="string">&quot;</span><span class="string">Somethin&#39; Stupid</span><span class="string">&quot;</span>,
+40         <span class="string">&quot;</span><span class="string">There&#39;s A Good Reason These Tables Are Numbered Honey, You Just Haven&#39;t Thought Of It Yet</span><span class="string">&quot;</span>,
+41         <span class="string">&quot;</span><span class="string">Tear In My Heart</span><span class="string">&quot;</span>
+42         ));
+43     }
+44 
+45     <span class="literal">private</span> <span class="literal">static</span> ArrayList <span class="ST2">createActorList</span>() {
+46         <span class="literal">return</span> <span class="literal">new</span> ArrayList&lt;&gt;(Arrays.<span class="ST3">asList</span>(
+47         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Danny</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Devito</span><span class="string">&quot;</span>),
+48         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Leonardo</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">DiCaprio</span><span class="string">&quot;</span>),
+49         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Tom</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Hanks</span><span class="string">&quot;</span>),
+50         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Nicolas</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Cage</span><span class="string">&quot;</span>),
+51         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Morgan</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Freeman</span><span class="string">&quot;</span>),
+52         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Michael</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Caine</span><span class="string">&quot;</span>),
+53         <span class="literal">new</span> Name(<span class="string">&quot;</span><span class="string">Christian</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Bale</span><span class="string">&quot;</span>)
+54         ));
+55     }
+56 
+57     <span class="literal">private</span> <span class="literal">static</span> ArrayList <span class="ST2">createTriangleList</span>() {
+58         ArrayList&lt;Triangle&gt; triangleList = <span class="literal">new</span> ArrayList&lt;&gt;();
+59         <span class="literal">for</span> (<span class="literal">int</span> i = 0 ; i &lt; 6 ; i++) {
+60             <span class="literal">double</span> a = Math.<span class="ST3">random</span>() * 100;
+61             <span class="literal">double</span> b = Math.<span class="ST3">random</span>() * 100;
+62             <span class="literal">double</span> c = Math.<span class="ST3">sqrt</span>(a * a + b * b - 2 * 5 * 7 * Math.<span class="ST3">cos</span>(Math.<span class="ST3">random</span>() * 150 + .1));
+63             System.<span class="ST4">out</span>.println(c);
+64             triangleList.add(<span class="literal">new</span> Triangle(a, b, c));
+65         }
+66         <span class="literal">return</span> triangleList;
+67     }    
+68 
+69     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">display</span>(String str, ArrayList list) {
+70         System.<span class="ST4">out</span>.println(str);
+71         <span class="literal">for</span> (Object o : list)
+72             System.<span class="ST4">out</span>.println(o);
+73     }
+74     
+75     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayTitles</span>(ArrayList&lt;String&gt; songs) {
+76         System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">The song title lengths ...</span><span class="string">&quot;</span>);
+77         <span class="literal">for</span> (String song : songs)
+78             System.<span class="ST4">out</span>.println(song.length());
+79     }
+80     
+81     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayInitials</span>(ArrayList&lt;Name&gt; names) {
+82         System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">The initials of the names ...</span><span class="string">&quot;</span>);
+83         <span class="literal">for</span> (Name name : names)
+84             System.<span class="ST4">out</span>.println(name.initials());
+85     }
+86     
+87     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayAreas</span>(ArrayList&lt;Triangle&gt; triangles) {
+88         System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">The areas of the triangles ...</span><span class="string">&quot;</span>);
+89         <span class="literal">for</span> (Triangle triangle : triangles)
+90             System.<span class="ST4">out</span>.println(triangle.area());
+91     }
+92     
+93 }
+94 
+</pre></body>
+</html>

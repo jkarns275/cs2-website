@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>LongerWords.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST2 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST4 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/textproccessing/LongerWords.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/*</span>
+ 2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+ 3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+ 4 <span class="comment"> * and open the template in the editor.</span>
+ 5 <span class="comment"> */</span>
+ 6 <span class="literal">package</span> textproccessing;
+ 7 
+ 8 <span class="literal">import</span> java.io.File;
+ 9 <span class="literal">import</span> java.io.FileNotFoundException;
+10 <span class="literal">import</span> java.util.LinkedList;
+11 <span class="literal">import</span> java.util.Scanner;
+12 <span class="literal">import</span> javax.swing.JFileChooser;
+13 
+14 <span class="comment">/**</span>
+15 <span class="comment"> *</span>
+16 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+17  <span class="comment">*/</span>
+18 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">LongerWords</span> {
+19     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String[] args) {
+20         <span class="literal">try</span> {
+21             File f = <span class="ST3">getFile</span>();
+22             LinkedList&lt;String&gt; words = <span class="ST3">getWords</span>(f);
+23             <span class="ST3">printLongerWords</span>(words);
+24         } <span class="literal">catch</span> (Exception e) {
+25             e.printStackTrace();
+26             System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="string">Oh snap! You didnt select a valid file!</span><span class="string">&quot;</span>);
+27         }
+28     }
+29 
+30     <span class="literal">private</span> <span class="literal">static</span> File <span class="ST2">getFile</span>() <span class="literal">throws</span> FileNotFoundException {
+31         JFileChooser fileChooser = <span class="literal">new</span> JFileChooser();
+32         fileChooser.setCurrentDirectory(<span class="literal">new</span> File(System.<span class="ST3">getProperty</span>(<span class="string">&quot;</span><span class="string">user.home</span><span class="string">&quot;</span>)));
+33         <span class="literal">int</span> result = fileChooser.showOpenDialog(<span class="literal">null</span>);
+34         <span class="literal">if</span> (result == JFileChooser.<span class="ST4">APPROVE_OPTION</span>)
+35             <span class="literal">return</span> fileChooser.getSelectedFile();
+36         <span class="literal">throw</span> <span class="literal">new</span> FileNotFoundException(<span class="string">&quot;</span><span class="string">No valid file selected...</span><span class="string">&quot;</span>);
+37     }
+38 
+39     <span class="literal">private</span> <span class="literal">static</span> LinkedList&lt;String&gt; <span class="ST2">getWords</span>(File f) <span class="literal">throws</span> FileNotFoundException {
+40         LinkedList&lt;String&gt; words = <span class="literal">new</span> LinkedList&lt;&gt;();
+41         Scanner scanner = <span class="literal">new</span> Scanner(f);
+42         <span class="literal">while</span> (scanner.hasNext()) {
+43             words.add(scanner.next());
+44         }
+45         <span class="literal">return</span> words;
+46     }
+47     
+48     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">average</span>(LinkedList&lt;String&gt; words) {
+49         <span class="literal">double</span> charCount = 0;
+50         <span class="literal">double</span> numberOfWords = words.size();
+51         
+52         <span class="literal">for</span> (String s : words)
+53             charCount += s.length();
+54         
+55         <span class="literal">return</span> charCount / numberOfWords;
+56     }
+57 
+58     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">printLongerWords</span>(LinkedList&lt;String&gt; words) {
+59         <span class="literal">double</span> average = <span class="ST3">average</span>(words);
+60         words.stream().filter((word) -&gt; (word.length() &gt; average)).forEach((word) -&gt; {
+61             System.<span class="ST4">out</span>.println(word);
+62         });
+63     }
+64 }
+65 
+</pre></body>
+</html>

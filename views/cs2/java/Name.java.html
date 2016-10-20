@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Name.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.ST2 {color: #009900}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/simplethings/Name.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/*</span>
+ 2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+ 3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+ 4 <span class="comment"> * and open the template in the editor.</span>
+ 5 <span class="comment"> */</span>
+ 6 <span class="literal">package</span> simplethings;
+ 7 
+ 8 <span class="comment">/**</span>
+ 9 <span class="comment"> *</span>
+10 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+11  <span class="comment">*/</span>
+12 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">Name</span> <span class="literal">implements</span> NameADT {
+13     
+14     <span class="literal">private</span> String <span class="ST2">firstName</span>, <span class="ST2">lastName</span>;
+15     
+16     <span class="literal">public</span> <span class="ST1">Name</span>(String first, String last) {
+17         <span class="ST2">firstName</span>   = first;
+18         <span class="ST2">lastName</span>    = last;
+19     }
+20 
+21     @Override
+22     <span class="literal">public</span> String <span class="ST1">first</span>() {
+23         <span class="literal">return</span> <span class="ST2">firstName</span>;
+24     }
+25 
+26     @Override
+27     <span class="literal">public</span> String <span class="ST1">last</span>() {
+28         <span class="literal">return</span> <span class="ST2">lastName</span>;
+29     }
+30 
+31     @Override
+32     <span class="literal">public</span> String <span class="ST1">natural</span>() {
+33         <span class="literal">return</span> <span class="ST2">firstName</span> + <span class="string">&quot;</span> <span class="string">&quot;</span> + <span class="ST2">lastName</span>;
+34     }
+35 
+36     @Override
+37     <span class="literal">public</span> String <span class="ST1">formal</span>() {
+38         <span class="literal">return</span> <span class="ST2">lastName</span> + <span class="string">&quot;</span><span class="string">, </span><span class="string">&quot;</span> + <span class="ST2">firstName</span>;
+39     }
+40 
+41     @Override
+42     <span class="literal">public</span> <span class="literal">boolean</span> <span class="ST1">check</span>(String fi, String li) {
+43         <span class="literal">return</span> fi.equals(<span class="ST2">firstName</span>.substring(0, 1)) &amp;&amp; li.equals(<span class="ST2">lastName</span>.substring(0, 1));
+44     }
+45     
+46     @Override
+47     <span class="literal">public</span> String <span class="ST1">toString</span>() {
+48         <span class="literal">return</span> natural();
+49     }
+50     
+51     <span class="literal">public</span> String <span class="ST1">initials</span>() {
+52         <span class="literal">return</span> <span class="string">&quot;&quot;</span> + <span class="ST2">firstName</span>.charAt(0) + <span class="ST2">lastName</span>.charAt(0);
+53     }
+54 }
+55 
+</pre></body>
+</html>

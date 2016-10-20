@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>LinkedListPlay.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST2 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST3 {font-family: Fira Code Retina; font-style: italic}
+.ST5 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.literal {color: #0000e6}
+.ST4 {color: #ce7b00; font-family: Fira Code Retina; font-weight: bold}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/linearlists/LinkedListPlay.java</td></tr></table>
+<pre>
+  1 <span class="comment">/*</span>
+  2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+  3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+  4 <span class="comment"> * and open the template in the editor.</span>
+  5 <span class="comment"> */</span>
+  6 <span class="literal">package</span> linearlists;
+  7 
+  8 <span class="literal">import</span> java.util.LinkedList;
+  9 <span class="literal">import</span> java.util.List;
+ 10 <span class="literal">import</span> java.util.Random;
+ 11 <span class="literal">import</span> java.util.stream.Collectors;
+ 12 <span class="literal">import</span> java.util.stream.DoubleStream;
+ 13 <span class="literal">import</span> java.util.stream.IntStream;
+ 14 <span class="literal">import</span> java.util.stream.Stream;
+ 15 
+ 16 <span class="comment">/**</span>
+ 17 <span class="comment"> *</span>
+ 18 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+ 19  <span class="comment">*/</span>
+ 20 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">LinkedListPlay</span> {
+ 21     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String[] args) {
+ 22         LinkedList animals = <span class="ST3">createAnimalList</span>();
+ 23         <span class="ST3">displayAnimals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The animal names ... </span><span class="string">&quot;</span>, animals);
+ 24         
+ 25         LinkedList reals = <span class="ST3">randomList</span>(77);
+ 26         <span class="ST3">displayReals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The real numbers ... </span><span class="string">&quot;</span>, reals);
+ 27         
+ 28         LinkedList lengths = <span class="ST3">lengths</span>(animals);
+ 29         <span class="ST3">displayLengths</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The lengths of the animal names ... </span><span class="string">&quot;</span>, lengths);
+ 30 
+ 31         LinkedList reverseAnimals = <span class="ST3">reverse</span>(animals);
+ 32         <span class="ST3">displayAnimals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The animal names in reverse order ... </span><span class="string">&quot;</span>, reverseAnimals);
+ 33         
+ 34         <span class="literal">double</span> minimum = <span class="ST3">minimum</span>(reals);
+ 35         System.<span class="ST5">out</span>.println(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The minimum number = </span><span class="string">&quot;</span> + minimum);
+ 36         <span class="ST3">displayReals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The real numbers ... </span><span class="string">&quot;</span>, reals);
+ 37         
+ 38         LinkedList orderedList = <span class="ST3">sort</span>(reals);
+ 39         <span class="ST3">displayReals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The real numbers in ascending order ... </span><span class="string">&quot;</span>, orderedList);
+ 40         <span class="ST3">displayReals</span>(<span class="string">&quot;</span><span class="ST4">\n</span><span class="string">The real numbers ... </span><span class="string">&quot;</span>, reals);
+ 41     }
+ 42 
+ 43     <span class="literal">private</span> <span class="literal">static</span> LinkedList <span class="ST2">createAnimalList</span>() {
+ 44         <span class="literal">return</span> Stream.<span class="ST3">of</span>(<span class="string">&quot;</span><span class="string">lobster</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">walrus</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">bat</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">jackalope</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">iquana</span><span class="string">&quot;</span>).collect(Collectors.<span class="ST3">toCollection</span>(LinkedList::<span class="literal">new</span>));
+ 45     }
+ 46 
+ 47     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayObjects</span>(String message, List list) {
+ 48         System.<span class="ST5">out</span>.println(message);
+ 49         System.<span class="ST5">out</span>.print(<span class="string">&quot;</span><span class="string">&lt; </span><span class="string">&quot;</span>);
+ 50         <span class="literal">for</span> (Object o : list) System.<span class="ST5">out</span>.print(o + <span class="string">&quot;</span> <span class="string">&quot;</span>);
+ 51         System.<span class="ST5">out</span>.println(<span class="string">&quot;</span><span class="string"> &gt;</span><span class="string">&quot;</span>);
+ 52     }
+ 53     
+ 54     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayAnimals</span>(String message, LinkedList&lt;String&gt; animals) {
+ 55         <span class="ST3">displayObjects</span>(message, animals);
+ 56     }
+ 57 
+ 58     <span class="literal">private</span> <span class="literal">static</span> LinkedList&lt;Double&gt; <span class="ST2">randomList</span>(<span class="literal">int</span> i) {
+ 59         <span class="literal">return</span> IntStream.<span class="ST3">rangeClosed</span>(0, i - 1).mapToDouble(x -&gt; Math.<span class="ST3">random</span>() * 100).boxed().collect(Collectors.<span class="ST3">toCollection</span>(LinkedList::<span class="literal">new</span>));
+ 60     }
+ 61 
+ 62     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayReals</span>(String message, LinkedList&lt;Double&gt; reals) {
+ 63         <span class="ST3">displayObjects</span>(message, reals);
+ 64     }
+ 65 
+ 66     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">displayLengths</span>(String message, LinkedList lengths) {
+ 67         <span class="ST3">displayObjects</span>(message, lengths);
+ 68     }
+ 69 
+ 70     <span class="literal">private</span> <span class="literal">static</span> LinkedList&lt;Integer&gt; <span class="ST2">lengths</span>(LinkedList&lt;String&gt; animals) {
+ 71         <span class="literal">return</span> IntStream.<span class="ST3">rangeClosed</span>(0, animals.size() - 1).map(x -&gt; animals.get(x).length()).boxed().collect(Collectors.<span class="ST3">toCollection</span>(LinkedList::<span class="literal">new</span>));
+ 72     }
+ 73 
+ 74     <span class="literal">private</span> <span class="literal">static</span> LinkedList <span class="ST2">reverse</span>(LinkedList list) {
+ 75         LinkedList newList = <span class="literal">new</span> LinkedList(list);
+ 76         IntStream.<span class="ST3">rangeClosed</span>(0, newList.size() / 2).forEach(i -&gt; {
+ 77             newList.set(i, list.get(list.size() - 1 - i));
+ 78             newList.set(newList.size() - 1 - i, list.get(i));
+ 79         });
+ 80         <span class="literal">return</span> newList;
+ 81     }
+ 82 
+ 83     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">minimum</span>(LinkedList&lt;Double&gt; reals) {
+ 84         <span class="literal">double</span> min = Double.<span class="ST5">POSITIVE_INFINITY</span>;
+ 85         <span class="literal">for</span> (Double d : reals) min = min &gt; d ? d : min;
+ 86         <span class="literal">return</span> min;
+ 87     }
+ 88     
+ 89     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">int</span> <span class="ST2">indexOfMinimum</span>(LinkedList&lt;Double&gt; reals, <span class="literal">int</span> startInd) {
+ 90         <span class="literal">int</span> indOfMin = startInd;
+ 91         <span class="literal">for</span> (<span class="literal">int</span> d = startInd ; d &lt; reals.size() ; d++)  {
+ 92             indOfMin = reals.get(indOfMin) &gt; reals.get(d) ? d : indOfMin;
+ 93         }
+ 94         <span class="literal">return</span> indOfMin;
+ 95     }
+ 96     
+ 97     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">swap</span>(LinkedList&lt;Double&gt; reals, <span class="literal">int</span> a, <span class="literal">int</span> b) {
+ 98         Double temp = reals.get(a);
+ 99         reals.set(a, reals.get(b));
+100         reals.set(b, temp);
+101     }
+102 
+103     <span class="literal">private</span> <span class="literal">static</span> LinkedList <span class="ST2">sort</span>(LinkedList&lt;Double&gt; reals) {
+104         LinkedList&lt;Double&gt; copy = <span class="literal">new</span> LinkedList&lt;&gt;(reals);
+105         LinkedList&lt;Double&gt; sorted = <span class="literal">new</span> LinkedList&lt;&gt;();
+106         <span class="literal">for</span> (<span class="literal">int</span> i = 0 ; i &lt; copy.size() ; i++) {
+107             <span class="literal">int</span> indexOfMin = <span class="ST3">indexOfMinimum</span>(copy, i);
+108             sorted.add(copy.get(indexOfMin));
+109             <span class="ST3">swap</span>(copy, i, indexOfMin);
+110         }
+111         <span class="literal">return</span> sorted;
+112     }
+113 }
+114 
+</pre></body>
+</html>

@@ -8,15 +8,13 @@
 body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
 pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
 table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
-.ST6 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
 .ST2 {color: #009900; font-family: Fira Code Retina; font-style: italic}
-.ST4 {font-family: Fira Code Retina; font-style: italic}
 .ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
 .ST1 {font-family: Fira Code Retina; font-weight: bold}
 .comment {color: #969696}
 .ST3 {color: #009900}
 .literal {color: #0000e6}
-.ST5 {color: #ce7b00; font-family: Fira Code Retina; font-weight: bold}
+.ST4 {color: #ce7b00; font-family: Fira Code Retina; font-weight: bold}
 .string {color: #ce7b00}
 -->
 </style>
@@ -37,170 +35,191 @@ table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
  11 <span class="literal">import</span> java.awt.Point;
  12 <span class="literal">import</span> java.awt.event.ActionEvent;
  13 <span class="literal">import</span> java.awt.event.ActionListener;
- 14 <span class="literal">import</span> java.util.ArrayList;
- 15 <span class="literal">import</span> java.util.Random;
- 16 <span class="literal">import</span> javax.swing.JButton;
- 17 <span class="literal">import</span> javax.swing.JFrame;
- 18 <span class="literal">import</span> javax.swing.JPanel;
- 19 <span class="literal">import</span> javax.swing.JScrollPane;
- 20 <span class="literal">import</span> javax.swing.JTextArea;
- 21 <span class="literal">import</span> javax.swing.JTextField;
- 22 <span class="literal">import</span> javax.swing.text.DefaultCaret;
- 23 
- 24 <span class="comment">/**</span>
- 25 <span class="comment"> *</span>
- 26 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
- 27  <span class="comment">*/</span>
- 28 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">KFrame8</span> <span class="literal">extends</span> JFrame <span class="literal">implements</span> ActionListener {
- 29     <span class="literal">static</span> Random <span class="ST2">random</span> = <span class="literal">new</span> Random();
- 30 
- 31             
- 32     <span class="literal">private</span> JButton     <span class="ST3">pointB</span>,
- 33                         <span class="ST3">lineB</span>,
- 34                         <span class="ST3">wordB</span>,
- 35                         <span class="ST3">quoteB</span>,
- 36                         <span class="ST3">colorB</span>,
- 37                         <span class="ST3">clearB</span>;
- 38     <span class="literal">private</span> JTextArea   <span class="ST3">output</span>;
- 39     <span class="literal">private</span> JTextField  <span class="ST3">input</span>;
- 40     
- 41     <span class="ST4">QuoteBank</span> <span class="ST3">quoteBank</span> = <span class="literal">new</span> KFrame8.QuoteBank(<span class="literal">new</span> String[]{
- 42         <span class="string">&quot;</span><span class="string">&#39;Anger is an acid that can do more harm to the vessel </span><span class="string">&quot;</span>
- 43         + <span class="string">&quot;</span><span class="string">in which it is stored than to anything on which it is poured.&#39;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Mark Twain</span><span class="string">&quot;</span>,
- 44         
- 45         <span class="string">&quot;</span><span class="string">&#39;Things are shaping up to be pretty odd&#39;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Panic! at the Disco</span><span class="string">&quot;</span>,
- 46         
- 47         <span class="string">&quot;</span><span class="string">&#39;If a man is proud of his wealth, he should not be praised until</span><span class="string">&quot;</span>
- 48         + <span class="string">&quot;</span><span class="string"> it is known how he employs it.&#39;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Socrates</span><span class="string">&quot;</span>,
- 49         
- 50         <span class="string">&quot;</span><span class="string">&#39;Gotta have a little sadness once in a while so you know when the giid tunes come.&#39;</span><span class="string">&quot;</span>
- 51         + <span class="string">&quot;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Bob Ross</span><span class="string">&quot;</span>,
- 52         
- 53         <span class="string">&quot;</span><span class="string">&#39;And why do we fall, Bruce? So we can learn to pick ourselves up.&#39;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Thomas Wayne</span><span class="string">&quot;</span>,
- 54         
- 55         <span class="string">&quot;</span><span class="string">&#39;Dudes is buying guns to take down each other-</span><span class="ST5">\n</span><span class="string">&quot;</span>
- 56         + <span class="string">&quot;</span><span class="string">Nobody wins&#39;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> - Nas</span><span class="string">&quot;</span>
- 57     });
- 58     <span class="ST4">WordBank</span> <span class="ST3">wordBank</span> = <span class="literal">new</span> KFrame8.WordBank(<span class="literal">new</span> String[]{
- 59     <span class="string">&quot;</span><span class="string">The</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Honey</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Of</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">He</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Their</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">They&#39;re</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">There</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">We</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Me</span><span class="string">&quot;</span>, 
- 60      <span class="string">&quot;</span><span class="string">Hard</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Core</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Coffee</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Hint</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Ant</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Turtle</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Distraught</span><span class="string">&quot;</span>,
- 61      <span class="string">&quot;</span><span class="string">Torn</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Corn</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Mitts</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Extraordinary</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Nine</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">Phantom</span><span class="string">&quot;</span>
- 62     });
- 63     
- 64     <span class="literal">public</span> <span class="ST1">KFrame8</span>(String title) {
- 65         <span class="literal">super</span>(title);
- 66         <span class="literal">this</span>.setSize(600, 300);
- 67         <span class="literal">this</span>.setDefaultCloseOperation(JFrame.<span class="ST2">EXIT_ON_CLOSE</span>);
- 68         initializerComponents(<span class="literal">this</span>.getContentPane());
- 69         addListeners();
- 70         setVisible(<span class="literal">true</span>);
- 71     }
- 72 
- 73     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">initializerComponents</span>(Container contentPane) {
- 74         <span class="ST3">pointB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Point</span><span class="string">&quot;</span>);
- 75         <span class="ST3">lineB</span>   = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Line</span><span class="string">&quot;</span>);
- 76         <span class="ST3">wordB</span>   = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Word</span><span class="string">&quot;</span>);
- 77         <span class="ST3">quoteB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Quote</span><span class="string">&quot;</span>);
- 78         <span class="ST3">colorB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Color</span><span class="string">&quot;</span>);
- 79         <span class="ST3">clearB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Clear</span><span class="string">&quot;</span>);
- 80         <span class="ST3">output</span>  = <span class="literal">new</span> JTextArea();
- 81         <span class="ST3">input</span>   = <span class="literal">new</span> JTextField();
- 82         
- 83         
- 84         <span class="ST3">output</span>.setLineWrap(<span class="literal">true</span>);   <span class="comment">// Enable word wrapping</span>
- 85         <span class="ST3">output</span>.setWrapStyleWord(<span class="literal">true</span>);
- 86         DefaultCaret caret = (DefaultCaret) <span class="ST3">output</span>.getCaret();
- 87         caret.setUpdatePolicy(DefaultCaret.<span class="ST2">ALWAYS_UPDATE</span>); <span class="comment">// Scroll to the bottom of the textarea when text is added</span>
- 88         <span class="ST3">output</span>.setTabSize(3);
- 89         
- 90         JScrollPane scrollPane  = <span class="literal">new</span> JScrollPane(<span class="ST3">output</span>);
- 91 
- 92         JPanel buttonContainer = <span class="literal">new</span> JPanel();
- 93         buttonContainer.add(<span class="ST3">pointB</span>);
- 94         buttonContainer.add(<span class="ST3">lineB</span>);
- 95         buttonContainer.add(<span class="ST3">wordB</span>);
- 96         buttonContainer.add(<span class="ST3">quoteB</span>);
- 97         buttonContainer.add(<span class="ST3">colorB</span>);
- 98         buttonContainer.add(<span class="ST3">clearB</span>);
- 99         
-100         contentPane.setLayout(<span class="literal">new</span> BorderLayout());
-101         contentPane.add(scrollPane, BorderLayout.<span class="ST2">CENTER</span>);
-102         contentPane.add(<span class="ST3">input</span>, BorderLayout.<span class="ST2">SOUTH</span>);
-103         contentPane.add(buttonContainer, BorderLayout.<span class="ST2">NORTH</span>);
-104     }
-105     
-106     <span class="literal">private</span> <span class="literal">void</span> <span class="ST1">addListeners</span>() {
-107         <span class="ST3">pointB</span>  .addActionListener(<span class="literal">this</span>);
-108         <span class="ST3">lineB</span>   .addActionListener(<span class="literal">this</span>);
-109         <span class="ST3">wordB</span>   .addActionListener(<span class="literal">this</span>);
-110         <span class="ST3">quoteB</span>  .addActionListener(<span class="literal">this</span>);
-111         <span class="ST3">colorB</span>  .addActionListener(<span class="literal">this</span>);
-112         <span class="ST3">clearB</span>  .addActionListener(<span class="literal">this</span>);
-113         <span class="ST3">input</span>   .addActionListener(<span class="literal">this</span>);
-114     }
-115     
-116     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">actionPerformed</span>(ActionEvent event) {
-117         String command = event.getActionCommand().toUpperCase();
-118         <span class="literal">if</span> (event.getSource() == <span class="ST3">input</span>) {
-119             <span class="ST3">input</span>.setText(<span class="string">&quot;&quot;</span>);
-120         }
-121         <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">CLEAR</span><span class="string">&quot;</span>)) {
-122             <span class="ST3">output</span>.setText(<span class="string">&quot;&quot;</span>);
-123             <span class="ST3">output</span>.setBackground(Color.<span class="ST2">WHITE</span>);
-124         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">LINE</span><span class="string">&quot;</span>)) {
-125             <span class="ST3">output</span>.append(lineToString(randomLine()) + <span class="string">&quot;</span><span class="ST5">\n</span><span class="string">&quot;</span>);
-126         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">WORD</span><span class="string">&quot;</span>)) {
-127              <span class="literal">this</span>.<span class="ST3">output</span>.append(<span class="ST3">wordBank</span>.nextWord() + <span class="string">&quot;</span><span class="ST5">\n</span><span class="string">&quot;</span>);
-128         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">QUOTE</span><span class="string">&quot;</span>)) {
-129             <span class="literal">this</span>.<span class="ST3">output</span>.append(<span class="ST3">quoteBank</span>.nextQuote() + <span class="string">&quot;</span><span class="ST5">\n</span><span class="string">&quot;</span>);
-130         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">COLOR</span><span class="string">&quot;</span>)) {
-131             <span class="literal">this</span>.<span class="ST3">output</span>.setBackground(<span class="literal">new</span> Color(<span class="ST2">random</span>.nextInt()));
-132         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">POINT</span><span class="string">&quot;</span>)) {
-133             <span class="literal">this</span>.<span class="ST3">output</span>.append(pointToString(randomPoint()) + <span class="string">&quot;</span><span class="ST5">\n</span><span class="string">&quot;</span>);
-134         }
-135     }
-136     
-137     <span class="literal">private</span> String <span class="ST1">lineToString</span>(Point p) {
-138         <span class="literal">return</span> <span class="string">&quot;</span><span class="string">Line { length = </span><span class="string">&quot;</span> + p.<span class="ST3">x</span> + <span class="string">&quot;</span><span class="ST5">\t</span><span class="string">; angle = </span><span class="string">&quot;</span> + p.<span class="ST3">y</span> + <span class="string">&quot;</span><span class="string">deg }</span><span class="string">&quot;</span>; 
-139     }
-140     
-141     <span class="literal">private</span> String <span class="ST1">pointToString</span>(Point p) {
-142         <span class="literal">return</span> <span class="string">&quot;</span><span class="string">Line { x = </span><span class="string">&quot;</span> + p.<span class="ST3">x</span> + <span class="string">&quot;</span><span class="ST5">\t</span><span class="string">; y = </span><span class="string">&quot;</span> + p.<span class="ST3">y</span> + <span class="string">&quot;</span><span class="string"> }</span><span class="string">&quot;</span>; 
-143     }
-144     
-145     <span class="literal">private</span> Point <span class="ST1">randomPoint</span>() {
-146         <span class="literal">return</span> <span class="literal">new</span> Point(<span class="ST2">random</span>.nextInt(501), <span class="ST2">random</span>.nextInt(601));
-147     }
-148     
-149     <span class="comment">/**</span>
-150 <span class="comment">     * </span>
-151 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">A</span> <span class="comment">point</span> <span class="comment">where</span> <span class="comment">x</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">Magnitude</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">line</span> <span class="comment">and</span> <span class="comment">y</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">angle</span> 
-152      <span class="comment">*/</span>
-153     <span class="literal">private</span> Point <span class="ST1">randomLine</span>() {
-154         <span class="literal">return</span> <span class="literal">new</span> Point(<span class="ST2">random</span>.nextInt(601), <span class="ST2">random</span>.nextInt(360));
-155     }
-156     
-157     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">class</span> <span class="ST6">QuoteBank</span> <span class="literal">extends</span> ArrayList&lt;String&gt; {
-158         <span class="literal">public</span> <span class="ST1">QuoteBank</span>(String[] quotes) {
-159             <span class="literal">super</span>();
-160             <span class="literal">for</span> (String aQuote : quotes)
-161                 <span class="literal">this</span>.add(aQuote);
+ 14 <span class="literal">import</span> java.util.Random;
+ 15 <span class="literal">import</span> javax.swing.JButton;
+ 16 <span class="literal">import</span> javax.swing.JFrame;
+ 17 <span class="literal">import</span> javax.swing.JPanel;
+ 18 <span class="literal">import</span> javax.swing.JScrollPane;
+ 19 <span class="literal">import</span> javax.swing.JTextArea;
+ 20 <span class="literal">import</span> javax.swing.JTextField;
+ 21 
+ 22 <span class="comment">/**</span>
+ 23 <span class="comment"> *</span>
+ 24 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+ 25  <span class="comment">*/</span>
+ 26 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">KFrame8</span> <span class="literal">extends</span> JFrame <span class="literal">implements</span> ActionListener {
+ 27     <span class="literal">static</span> Random <span class="ST2">random</span> = <span class="literal">new</span> Random();
+ 28 
+ 29             
+ 30     <span class="literal">private</span> JButton     <span class="ST3">pointB</span>,
+ 31                         <span class="ST3">lineB</span>,
+ 32                         <span class="ST3">wordB</span>,
+ 33                         <span class="ST3">quoteB</span>,
+ 34                         <span class="ST3">colorB</span>,
+ 35                         <span class="ST3">clearB</span>;
+ 36     <span class="literal">private</span> JTextArea   <span class="ST3">output</span>;
+ 37     <span class="literal">private</span> JTextField  <span class="ST3">input</span>;
+ 38     
+ 39     <span class="literal">private</span> QuoteBank <span class="ST3">quoteBank</span> = <span class="literal">new</span> QuoteBank();
+ 40     <span class="literal">private</span> WordBank <span class="ST3">wordBank</span> = <span class="literal">new</span> WordBank();
+ 41    
+ 42     <span class="literal">public</span> <span class="ST1">KFrame8</span>(String title) {
+ 43         <span class="literal">super</span>(title);
+ 44         <span class="literal">this</span>.setSize(600, 300);
+ 45         <span class="literal">this</span>.setDefaultCloseOperation(JFrame.<span class="ST2">EXIT_ON_CLOSE</span>);
+ 46         initializerComponents(<span class="literal">this</span>.getContentPane());
+ 47         addListeners();
+ 48         setVisible(<span class="literal">true</span>);
+ 49     }
+ 50 
+ 51     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">initializerComponents</span>(Container contentPane) {
+ 52         <span class="ST3">pointB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Point</span><span class="string">&quot;</span>);
+ 53         <span class="ST3">lineB</span>   = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Line</span><span class="string">&quot;</span>);
+ 54         <span class="ST3">wordB</span>   = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Word</span><span class="string">&quot;</span>);
+ 55         <span class="ST3">quoteB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Quote</span><span class="string">&quot;</span>);
+ 56         <span class="ST3">colorB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Color</span><span class="string">&quot;</span>);
+ 57         <span class="ST3">clearB</span>  = <span class="literal">new</span> JButton(<span class="string">&quot;</span><span class="string">Clear</span><span class="string">&quot;</span>);
+ 58         <span class="ST3">output</span>  = <span class="literal">new</span> JTextArea();
+ 59         <span class="ST3">input</span>   = <span class="literal">new</span> JTextField();
+ 60         
+ 61         
+ 62         <span class="ST3">output</span>.setLineWrap(<span class="literal">true</span>);   <span class="comment">// Enable word wrapping</span>
+ 63         <span class="ST3">output</span>.setWrapStyleWord(<span class="literal">true</span>);
+ 64         <span class="comment">// Scroll to the bottom of the textarea when text is added</span>
+ 65         <span class="ST3">output</span>.setTabSize(3);
+ 66         
+ 67         JScrollPane scrollPane  = <span class="literal">new</span> JScrollPane(<span class="ST3">output</span>);
+ 68 
+ 69         JPanel buttonContainer = <span class="literal">new</span> JPanel();
+ 70         buttonContainer.add(<span class="ST3">pointB</span>);
+ 71         buttonContainer.add(<span class="ST3">lineB</span>);
+ 72         buttonContainer.add(<span class="ST3">wordB</span>);
+ 73         buttonContainer.add(<span class="ST3">quoteB</span>);
+ 74         buttonContainer.add(<span class="ST3">colorB</span>);
+ 75         buttonContainer.add(<span class="ST3">clearB</span>);
+ 76         
+ 77         contentPane.setLayout(<span class="literal">new</span> BorderLayout());
+ 78         contentPane.add(scrollPane, BorderLayout.<span class="ST2">CENTER</span>);
+ 79         contentPane.add(<span class="ST3">input</span>, BorderLayout.<span class="ST2">SOUTH</span>);
+ 80         contentPane.add(buttonContainer, BorderLayout.<span class="ST2">NORTH</span>);
+ 81     }
+ 82     
+ 83     <span class="literal">private</span> <span class="literal">void</span> <span class="ST1">addListeners</span>() {
+ 84         <span class="ST3">pointB</span>  .addActionListener(<span class="literal">this</span>);
+ 85         <span class="ST3">lineB</span>   .addActionListener(<span class="literal">this</span>);
+ 86         <span class="ST3">wordB</span>   .addActionListener(<span class="literal">this</span>);
+ 87         <span class="ST3">quoteB</span>  .addActionListener(<span class="literal">this</span>);
+ 88         <span class="ST3">colorB</span>  .addActionListener(<span class="literal">this</span>);
+ 89         <span class="ST3">clearB</span>  .addActionListener(<span class="literal">this</span>);
+ 90         <span class="ST3">input</span>   .addActionListener(<span class="literal">this</span>);
+ 91     }
+ 92     
+ 93     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">actionPerformed</span>(ActionEvent event) {
+ 94         String command = event.getActionCommand().toUpperCase();
+ 95         <span class="literal">if</span> (event.getSource() == <span class="ST3">input</span>) {
+ 96             <span class="ST3">input</span>.setText(<span class="string">&quot;&quot;</span>);
+ 97         }
+ 98         <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">CLEAR</span><span class="string">&quot;</span>)) {
+ 99             <span class="ST3">output</span>.setText(<span class="string">&quot;&quot;</span>);
+100             <span class="ST3">output</span>.setBackground(Color.<span class="ST2">WHITE</span>);
+101         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">LINE</span><span class="string">&quot;</span>)) {
+102             <span class="ST3">output</span>.append(lineToString(randomLine()) + <span class="string">&quot;</span><span class="ST4">\n</span><span class="string">&quot;</span>);
+103         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">WORD</span><span class="string">&quot;</span>)) {
+104              <span class="literal">this</span>.<span class="ST3">output</span>.append(<span class="ST3">wordBank</span>.nextWord() + <span class="string">&quot;</span><span class="ST4">\n</span><span class="string">&quot;</span>);
+105         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">QUOTE</span><span class="string">&quot;</span>)) {
+106             <span class="literal">this</span>.<span class="ST3">output</span>.append(<span class="ST3">quoteBank</span>.nextQuote() + <span class="string">&quot;</span><span class="ST4">\n</span><span class="string">&quot;</span>);
+107         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">COLOR</span><span class="string">&quot;</span>)) {
+108             <span class="literal">this</span>.<span class="ST3">output</span>.setBackground(<span class="literal">new</span> Color(<span class="ST2">random</span>.nextInt()));
+109         } <span class="literal">else</span> <span class="literal">if</span> (command.equals(<span class="string">&quot;</span><span class="string">POINT</span><span class="string">&quot;</span>)) {
+110             <span class="literal">this</span>.<span class="ST3">output</span>.append(pointToString(randomPoint()) + <span class="string">&quot;</span><span class="ST4">\n</span><span class="string">&quot;</span>);
+111         }
+112     }
+113     
+114     <span class="literal">private</span> String <span class="ST1">lineToString</span>(Point p) {
+115         <span class="literal">return</span> <span class="string">&quot;</span><span class="string">Line { length = </span><span class="string">&quot;</span> + p.<span class="ST3">x</span> + <span class="string">&quot;</span><span class="ST4">\t</span><span class="string">; angle = </span><span class="string">&quot;</span> + p.<span class="ST3">y</span> + <span class="string">&quot;</span><span class="string">deg }</span><span class="string">&quot;</span>; 
+116     }
+117     
+118     <span class="literal">private</span> String <span class="ST1">pointToString</span>(Point p) {
+119         <span class="literal">return</span> <span class="string">&quot;</span><span class="string">Line { x = </span><span class="string">&quot;</span> + p.<span class="ST3">x</span> + <span class="string">&quot;</span><span class="ST4">\t</span><span class="string">; y = </span><span class="string">&quot;</span> + p.<span class="ST3">y</span> + <span class="string">&quot;</span><span class="string"> }</span><span class="string">&quot;</span>; 
+120     }
+121     
+122     <span class="literal">private</span> Point <span class="ST1">randomPoint</span>() {
+123         <span class="literal">return</span> <span class="literal">new</span> Point(<span class="ST2">random</span>.nextInt(501), <span class="ST2">random</span>.nextInt(601));
+124     }
+125     
+126     <span class="comment">/**</span>
+127 <span class="comment">     * </span>
+128 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">A</span> <span class="comment">point</span> <span class="comment">where</span> <span class="comment">x</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">Magnitude</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">line</span> <span class="comment">and</span> <span class="comment">y</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">angle</span> 
+129      <span class="comment">*/</span>
+130     <span class="literal">private</span> Point <span class="ST1">randomLine</span>() {
+131         <span class="literal">return</span> <span class="literal">new</span> Point(<span class="ST2">random</span>.nextInt(601), <span class="ST2">random</span>.nextInt(360));
+132     }
+133     
+134     <span class="literal">private</span> <span class="literal">class</span> <span class="ST1">QuoteBank</span> {
+135         <span class="literal">private</span> Random <span class="ST3">random</span> = <span class="literal">new</span> Random();
+136         <span class="literal">private</span> String[] <span class="ST3">quotes</span>;
+137         <span class="literal">public</span> <span class="ST1">QuoteBank</span>() {
+138             <span class="ST3">quotes</span> = <span class="literal">new</span> String[10];
+139             <span class="ST3">quotes</span>[0] = <span class="string">&quot;</span><span class="string">&#39;Anger is an acid that can do more harm to the vessel </span><span class="string">&quot;</span>
+140                         + <span class="string">&quot;</span><span class="string">in which it is stored than to anything on which it is poured.&#39;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Mark Twain</span><span class="string">&quot;</span>;
+141         
+142             <span class="ST3">quotes</span>[1] = <span class="string">&quot;</span><span class="string">&#39;Things are shaping up to be pretty odd&#39;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Panic! at the Disco</span><span class="string">&quot;</span>;
+143             
+144             <span class="ST3">quotes</span>[2] = <span class="string">&quot;</span><span class="string">&#39;If a man is proud of his wealth, he should not be praised until</span><span class="string">&quot;</span>
+145                         + <span class="string">&quot;</span><span class="string"> it is known how he employs it.&#39;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Socrates</span><span class="string">&quot;</span>;
+146             
+147             <span class="ST3">quotes</span>[3] = <span class="string">&quot;</span><span class="string">&#39;Gotta have a little sadness once in a while so you know when the good times come.&#39;</span><span class="string">&quot;</span>
+148                         + <span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Bob Ross</span><span class="string">&quot;</span>;
+149             
+150             <span class="ST3">quotes</span>[4] = <span class="string">&quot;</span><span class="string">&#39;And why do we fall, Bruce? So we can learn to pick ourselves up.&#39;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Thomas Wayne</span><span class="string">&quot;</span>;
+151             
+152             <span class="ST3">quotes</span>[5] = <span class="string">&quot;</span><span class="string">&#39;Dudes is buying guns to take down each other-</span><span class="ST4">\n</span><span class="string">&quot;</span>
+153                         + <span class="string">&quot;</span><span class="string">Nobody wins&#39;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> - Nas</span><span class="string">&quot;</span>;
+154             <span class="ST3">quotes</span>[6] = <span class="string">&quot;</span><span class="string">It is better to rust out than wear out.</span><span class="ST4">\n</span><span class="string"> - Edwin Markham</span><span class="string">&quot;</span>;
+155             
+156             <span class="ST3">quotes</span>[7] = <span class="string">&quot;</span><span class="string">Once a week, I like to slip into a deep existential depression where I lose all my sense of oneness and self-worth. </span><span class="ST4">\n</span><span class="string"> - Bo Burnham</span><span class="string">&quot;</span>;
+157      
+158             <span class="ST3">quotes</span>[8] = <span class="string">&quot;</span><span class="string">Politics is the art of choosing between the disastrous and the unpalatable. </span><span class="ST4">\n</span><span class="string">&quot;</span> +
+159                         <span class="string">&quot;</span><span class="string"> - John Kenneth Galbraith</span><span class="string">&quot;</span>;
+160             
+161             <span class="ST3">quotes</span>[9] = <span class="string">&quot;</span><span class="string">The flaws, the mistakes I make - that&#39;s the real me. </span><span class="ST4">\n</span><span class="string"> - Nas</span><span class="string">&quot;</span>;
 162         }
 163         <span class="literal">public</span> String <span class="ST1">nextQuote</span>() {
-164             <span class="literal">return</span> <span class="literal">this</span>.get(KFrame8.<span class="ST2">random</span>.nextInt(<span class="literal">this</span>.size()));
+164             <span class="literal">return</span> <span class="ST3">quotes</span>[<span class="ST3">random</span>.nextInt(<span class="ST3">quotes</span>.<span class="ST3">length</span>)];
 165         }
 166     }
-167     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">class</span> <span class="ST6">WordBank</span> <span class="literal">extends</span> ArrayList&lt;String&gt; {
-168         <span class="literal">public</span> <span class="ST1">WordBank</span>(String[] words) {
-169             <span class="literal">super</span>();
-170             <span class="literal">for</span> (String aWord : words) 
-171                 <span class="literal">this</span>.add(aWord);
+167     <span class="literal">private</span> <span class="literal">class</span> <span class="ST1">Word</span> {
+168         String <span class="ST3">word</span>, <span class="ST3">definition</span>;
+169         <span class="literal">public</span> <span class="ST1">Word</span>(String word, String definition) {
+170             <span class="literal">this</span>.<span class="ST3">word</span> = word;
+171             <span class="literal">this</span>.<span class="ST3">definition</span> = definition;
 172         }
-173         <span class="literal">public</span> String <span class="ST1">nextWord</span>() {
-174             <span class="literal">return</span> <span class="literal">this</span>.get(KFrame8.<span class="ST2">random</span>.nextInt(<span class="literal">this</span>.size()));
-175         }
-176     }
-177 }
-178 
+173         @Override
+174         <span class="literal">public</span> String <span class="ST1">toString</span>() {
+175             <span class="literal">return</span> <span class="string">&quot;</span><span class="ST4">\&quot;</span><span class="string">&quot;</span> + <span class="ST3">word</span> + <span class="string">&quot;</span><span class="ST4">\&quot;</span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string"> ~ </span><span class="string">&quot;</span> + <span class="ST3">definition</span>;
+176         }
+177     }
+178     <span class="literal">private</span> <span class="literal">class</span> <span class="ST1">WordBank</span> {
+179         <span class="literal">private</span> Random <span class="ST3">random</span> = <span class="literal">new</span> Random();
+180         <span class="literal">private</span> Word[] <span class="ST3">words</span>;
+181         <span class="literal">public</span> <span class="ST1">WordBank</span>() {
+182             <span class="ST3">words</span> = <span class="literal">new</span> Word[10];
+183             <span class="ST3">words</span>[0] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">The</span><span class="string">&quot;</span>,      <span class="string">&quot;</span><span class="string">denoting one or more people or things already mentioned or assumed to be common knowledge.</span><span class="string">&quot;</span>);
+184             <span class="ST3">words</span>[1] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Honey</span><span class="string">&quot;</span>,    <span class="string">&quot;</span><span class="string">a sweet, sticky, yellowish-brown fluid made by bees and other insects from nectar collected from flowers.</span><span class="string">&quot;</span>);
+185             <span class="ST3">words</span>[2] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Of</span><span class="string">&quot;</span>,       <span class="string">&quot;</span><span class="string">expressing the relationship between a part and a whole.</span><span class="string">&quot;</span>);
+186             <span class="ST3">words</span>[3] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">He</span><span class="string">&quot;</span>,       <span class="string">&quot;</span><span class="string">used to refer to a man, boy, or male animal previously mentioned or easily identified.</span><span class="string">&quot;</span>);
+187             <span class="ST3">words</span>[4] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Their</span><span class="string">&quot;</span>,    <span class="string">&quot;</span><span class="string">belonging to or associated with the people or things previously mentioned or easily identified.</span><span class="string">&quot;</span>);
+188             <span class="ST3">words</span>[5] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">They&#39;re</span><span class="string">&quot;</span>,  <span class="string">&quot;</span><span class="string">contraction of &#39;they are&#39;</span><span class="string">&quot;</span>);
+189             <span class="ST3">words</span>[6] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Phantom</span><span class="string">&quot;</span>,  <span class="string">&quot;</span><span class="string">a ghost.</span><span class="string">&quot;</span>);
+190             <span class="ST3">words</span>[7] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Torn</span><span class="string">&quot;</span>,     <span class="string">&quot;</span><span class="string">to be in a state of uncertainty between two conflicting options or parties.</span><span class="string">&quot;</span>);
+191             <span class="ST3">words</span>[8] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Taut</span><span class="string">&quot;</span>,     <span class="string">&quot;</span><span class="string">concise and controlled.</span><span class="string">&quot;</span>);
+192             <span class="ST3">words</span>[9] = <span class="literal">new</span> Word(<span class="string">&quot;</span><span class="string">Harp</span><span class="string">&quot;</span>,     <span class="string">&quot;</span><span class="string">talk or write persistently and tediously on a particular topic.</span><span class="string">&quot;</span>);
+193         }
+194         <span class="literal">public</span> Word <span class="ST1">nextWord</span>() {
+195             <span class="literal">return</span> <span class="ST3">words</span>[<span class="ST3">random</span>.nextInt(<span class="ST3">words</span>.<span class="ST3">length</span>)];
+196         }
+197     }
+198 }
+199 
 </pre></body>
 </html>
