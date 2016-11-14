@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>BinaryTreeTester.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST1 {font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST2 {font-family: Fira Code Retina; font-style: italic}
+.ST3 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.ST0 {font-family: Fira Code Retina; font-weight: bold}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/trees/BinaryTreeTester.java</td></tr></table>
+<pre>
+  1 <span class="literal">package</span> trees;
+  2 
+  3 
+  4 <span class="literal">public</span> <span class="literal">class</span> <span class="ST0">BinaryTreeTester</span> {
+  5     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">main</span>(String[] args) { 
+  6         <span class="ST2">test1</span>();
+  7         <span class="ST2">test2</span>();
+  8     }
+  9     
+ 10     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test1</span>() {
+ 11         <span class="literal">try</span> {
+ 12             <span class="ST2">test1LR</span>();
+ 13             <span class="ST2">test1ST</span>();
+ 14             <span class="ST2">test1ND</span>();
+ 15         } <span class="literal">catch</span>(Exception e) {
+ 16             
+ 17         }
+ 18     }
+ 19     
+ 20     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test1LR</span>() {
+ 21         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 1 LR...</span><span class="string">&quot;</span>);
+ 22         BinaryTree&lt;String, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+ 23         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+ 24         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the tree directionally ...</span><span class="string">&quot;</span>);
+ 25         <span class="literal">try</span> {
+ 26             t.addLR(<span class="string">&quot;</span><span class="string">lion</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;&quot;</span>);
+ 27             t.addLR(<span class="string">&quot;</span><span class="string">shark</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">r</span><span class="string">&quot;</span>);
+ 28             t.addLR(<span class="string">&quot;</span><span class="string">elephant</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">l</span><span class="string">&quot;</span>);
+ 29             t.addLR(<span class="string">&quot;</span><span class="string">zebra</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">rr</span><span class="string">&quot;</span>);
+ 30             t.addLR(<span class="string">&quot;</span><span class="string">alligator</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">ll</span><span class="string">&quot;</span>);
+ 31             t.addLR(<span class="string">&quot;</span><span class="string">ardvaark</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">llr</span><span class="string">&quot;</span>);
+ 32             t.addLR(<span class="string">&quot;</span><span class="string">tiger</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">rrl</span><span class="string">&quot;</span>);
+ 33             t.addLR(<span class="string">&quot;</span><span class="string">giraffe</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">lr</span><span class="string">&quot;</span>);
+ 34             t.addLR(<span class="string">&quot;</span><span class="string">bear</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">llrr</span><span class="string">&quot;</span>);
+ 35             t.addLR(<span class="string">&quot;</span><span class="string">snake</span><span class="string">&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">rrll</span><span class="string">&quot;</span>);
+ 36 
+ 37         } <span class="literal">catch</span>(Exception e) {
+ 38             e.printStackTrace();
+ 39         }
+ 40         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+ 41         t.preorder();
+ 42         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+ 43         t.inorder();
+ 44         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+ 45         t.postorder();
+ 46         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; HEIGHT = </span><span class="string">&quot;</span> + t.height());
+ 47     }
+ 48     
+ 49     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test1ST</span>() <span class="literal">throws</span> BinaryTreeCreationException {
+ 50         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 1 ST...</span><span class="string">&quot;</span>);
+ 51         BinaryTree&lt;String, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+ 52         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+ 53         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the binary search tree ...</span><span class="string">&quot;</span>);
+ 54         t.addST(<span class="string">&quot;</span><span class="string">lion</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 55         t.addST(<span class="string">&quot;</span><span class="string">shark</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 56         t.addST(<span class="string">&quot;</span><span class="string">elephant</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 57         t.addST(<span class="string">&quot;</span><span class="string">zebra</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 58         t.addST(<span class="string">&quot;</span><span class="string">alligator</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 59         t.addST(<span class="string">&quot;</span><span class="string">ardvaark</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 60         t.addST(<span class="string">&quot;</span><span class="string">tiger</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 61         t.addST(<span class="string">&quot;</span><span class="string">giraffe</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 62         t.addST(<span class="string">&quot;</span><span class="string">bear</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 63         t.addST(<span class="string">&quot;</span><span class="string">snake</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 64         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+ 65         t.preorder();
+ 66         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+ 67         t.inorder();
+ 68         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+ 69         t.postorder();
+ 70         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; HEIGHT = </span><span class="string">&quot;</span> + t.height());
+ 71     }
+ 72     
+ 73     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test1ND</span>() {
+ 74         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 1 ND...</span><span class="string">&quot;</span>);
+ 75         BinaryTree&lt;String, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+ 76         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+ 77         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the tree randomly ...</span><span class="string">&quot;</span>);
+ 78         t.addND(<span class="string">&quot;</span><span class="string">lion</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 79         t.addND(<span class="string">&quot;</span><span class="string">shark</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 80         t.addND(<span class="string">&quot;</span><span class="string">elephant</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 81         t.addND(<span class="string">&quot;</span><span class="string">zebra</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 82         t.addND(<span class="string">&quot;</span><span class="string">alligator</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 83         t.addND(<span class="string">&quot;</span><span class="string">ardvaark</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 84         t.addND(<span class="string">&quot;</span><span class="string">tiger</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 85         t.addND(<span class="string">&quot;</span><span class="string">giraffe</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 86         t.addND(<span class="string">&quot;</span><span class="string">bear</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 87         t.addND(<span class="string">&quot;</span><span class="string">snake</span><span class="string">&quot;</span>, <span class="literal">null</span>);
+ 88         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+ 89         t.preorder();
+ 90         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+ 91         t.inorder();
+ 92         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+ 93         t.postorder();
+ 94         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; HEIGHT = </span><span class="string">&quot;</span> + t.height());
+ 95     }
+ 96     
+ 97     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test2</span>() {
+ 98         <span class="literal">try</span> {
+ 99         <span class="ST2">test2LR</span>();
+100         <span class="ST2">test2ND</span>();
+101         <span class="ST2">test2ST</span>();
+102         } <span class="literal">catch</span>(Exception e) {
+103             
+104         }
+105     }
+106     
+107     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test2LR</span>() {
+108         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 2 LR...</span><span class="string">&quot;</span>);
+109         BinaryTree&lt;Double, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+110         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+111         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the tree directionally ...</span><span class="string">&quot;</span>);
+112         <span class="literal">try</span> {
+113             t.addLR(1.4, <span class="literal">null</span>, <span class="string">&quot;&quot;</span>);
+114             t.addLR(10.0132, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">r</span><span class="string">&quot;</span>);
+115             t.addLR(10.12, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">l</span><span class="string">&quot;</span>);
+116             t.addLR(-19.23215, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">lr</span><span class="string">&quot;</span>);
+117             t.addLR(14.0, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">rl</span><span class="string">&quot;</span>);
+118             t.addLR(3.141592, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">lrl</span><span class="string">&quot;</span>);
+119             t.addLR(199.123, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">rll</span><span class="string">&quot;</span>);
+120             t.addLR(6.101, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">lrlr</span><span class="string">&quot;</span>);
+121             t.addLR(0.0, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">ll</span><span class="string">&quot;</span>);
+122             t.addLR(123213.0123442, <span class="literal">null</span>, <span class="string">&quot;</span><span class="string">llr</span><span class="string">&quot;</span>);
+123 
+124         } <span class="literal">catch</span>(Exception e) {
+125             e.printStackTrace();
+126         }
+127         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+128         t.preorder();
+129         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+130         t.inorder();
+131         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+132         t.postorder();
+133         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; HEIGHT = </span><span class="string">&quot;</span> + t.height());
+134     }
+135     
+136     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test2ST</span>() <span class="literal">throws</span> BinaryTreeCreationException {
+137         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 2 ST...</span><span class="string">&quot;</span>);
+138         BinaryTree&lt;Double, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+139         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+140         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the binary search tree ...</span><span class="string">&quot;</span>);
+141         t.addST(1.4, <span class="literal">null</span>);
+142         t.addST(10.0132, <span class="literal">null</span>);
+143         t.addST(10.12, <span class="literal">null</span>);
+144         t.addST(-19.23215, <span class="literal">null</span>);
+145         t.addST(14.0, <span class="literal">null</span>);
+146         t.addST(3.141592, <span class="literal">null</span>);
+147         t.addST(199.123, <span class="literal">null</span>);
+148         t.addST(6.101, <span class="literal">null</span>);
+149         t.addST(0.0, <span class="literal">null</span>);
+150         t.addST(123213.0123442, <span class="literal">null</span>);
+151         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+152         t.preorder();
+153         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+154         t.inorder();
+155         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+156         t.postorder();
+157     }
+158     
+159     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">test2ND</span>() {
+160         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">Test 2 ND...</span><span class="string">&quot;</span>);
+161         BinaryTree&lt;Double, String&gt;  t = <span class="literal">new</span> BinaryTree&lt;&gt;();
+162         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Creating empty tree...</span><span class="string">&quot;</span>);
+163         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; Adding elements to the tree randomly ...</span><span class="string">&quot;</span>);
+164         t.addND(1.4, <span class="literal">null</span>);
+165         t.addND(10.0132, <span class="literal">null</span>);
+166         t.addND(10.12, <span class="literal">null</span>);
+167         t.addND(-19.23215, <span class="literal">null</span>);
+168         t.addND(14.0, <span class="literal">null</span>);
+169         t.addND(3.141592, <span class="literal">null</span>);
+170         t.addND(199.123, <span class="literal">null</span>);
+171         t.addND(6.101, <span class="literal">null</span>);
+172         t.addND(0.0, <span class="literal">null</span>);
+173         t.addND(123213.0123442, <span class="literal">null</span>);
+174         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; PREORDER</span><span class="string">&quot;</span>);
+175         t.preorder();
+176         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; INORDER</span><span class="string">&quot;</span>);
+177         t.inorder();
+178         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; POSTORDER</span><span class="string">&quot;</span>);
+179         t.postorder();
+180         System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">&gt;&gt;&gt; HEIGHT = </span><span class="string">&quot;</span> + t.height());
+181     }
+182 }
+183 
+</pre></body>
+</html>

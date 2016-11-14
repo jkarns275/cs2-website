@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>BinaryTree.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST3 {color: #009900; font-family: Fira Code Retina; font-style: italic}
+.ST4 {font-family: Fira Code Retina; font-style: italic}
+.ST0 {color: #969696; font-family: Fira Code Retina; font-weight: bold}
+.ST1 {font-family: Fira Code Retina; font-weight: bold}
+.comment {color: #969696}
+.ST2 {color: #009900}
+.literal {color: #0000e6}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/wua/Documents/academic/CS2F16/src/trees/BinaryTree.java</td></tr></table>
+<pre>
+  1 <span class="comment">/*</span>
+  2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+  3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+  4 <span class="comment"> * and open the template in the editor.</span>
+  5 <span class="comment"> */</span>
+  6 <span class="literal">package</span> trees;
+  7 
+  8 <span class="comment">/**</span>
+  9 <span class="comment"> *</span>
+ 10 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">wua</span>
+ 11  <span class="comment">*/</span>
+ 12 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">BinaryTree</span>&lt;K, V&gt; <span class="literal">implements</span> BinaryTreeADT&lt;K, V&gt; {
+ 13     
+ 14     <span class="comment">/**</span>
+ 15 <span class="comment">     * </span><span class="ST0">The</span> <span class="ST0">instance</span> <span class="ST0">variable</span> <span class="ST0">representing</span> <span class="ST0">the</span> <span class="ST0">left</span> <span class="ST0">node</span><span class="ST0">.</span>
+ 16 <span class="comment">     * </span><span class="comment">Will</span> <span class="comment">be</span> <span class="comment">empty</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">node</span> <span class="comment">doesn</span><span class="comment">&#39;</span><span class="comment">t</span> <span class="comment">exist</span><span class="comment">.</span>
+ 17      <span class="comment">*/</span>
+ 18     <span class="literal">private</span> BinaryTree&lt;K, V&gt; <span class="ST2">left</span>;
+ 19     <span class="comment">/**</span>
+ 20 <span class="comment">     * </span><span class="ST0">The</span> <span class="ST0">instance</span> <span class="ST0">variable</span> <span class="ST0">representing</span> <span class="ST0">the</span> <span class="ST0">right</span> <span class="ST0">node</span><span class="ST0">.</span>
+ 21 <span class="comment">     * </span><span class="comment">Will</span> <span class="comment">be</span> <span class="comment">empty</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">node</span> <span class="comment">doesn</span><span class="comment">&#39;</span><span class="comment">t</span> <span class="comment">exist</span>
+ 22      <span class="comment">*/</span>
+ 23     <span class="literal">private</span> BinaryTree&lt;K, V&gt; <span class="ST2">right</span>;
+ 24     <span class="comment">/**</span>
+ 25 <span class="comment">     * </span><span class="comment">The</span> <span class="comment">key</span> <span class="comment">instance</span> <span class="comment">variable</span>
+ 26      <span class="comment">*/</span>
+ 27     <span class="literal">private</span> K <span class="ST2">key</span>;
+ 28     <span class="comment">/**</span>
+ 29 <span class="comment">     * </span><span class="comment">The</span> <span class="comment">value</span> <span class="comment">instance</span> <span class="comment">variable</span>
+ 30      <span class="comment">*/</span>
+ 31     <span class="literal">private</span> V <span class="ST2">value</span>;
+ 32     
+ 33     <span class="comment">/**</span>
+ 34 <span class="comment">     *  </span><span class="comment">Creates</span> <span class="comment">a</span> <span class="comment">new</span> <span class="comment">BinaryTree</span> <span class="comment">object</span> <span class="comment">with</span> <span class="comment">all</span> <span class="comment">instance</span> <span class="comment">variables</span>
+ 35 <span class="comment">     *  </span><span class="comment">set</span> <span class="comment">to</span> <span class="comment">null</span>
+ 36      <span class="comment">*/</span>
+ 37     <span class="literal">public</span> <span class="ST1">BinaryTree</span>() {
+ 38         <span class="ST2">key</span> = <span class="literal">null</span>;
+ 39     }
+ 40 
+ 41     <span class="comment">/**</span>
+ 42 <span class="comment">     * </span><span class="ST0">Getter</span> <span class="ST0">function</span> <span class="ST0">for</span> <span class="ST0">the</span> <span class="ST0">value</span> <span class="ST0">instance</span> <span class="ST0">variable</span>
+ 43 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">this</span><span class="comment">.</span><span class="comment">value</span>
+ 44      <span class="comment">*/</span>
+ 45     @Override
+ 46     <span class="literal">public</span> V <span class="ST1">value</span>() {
+ 47         <span class="literal">return</span> <span class="ST2">value</span>;
+ 48     }
+ 49         
+ 50     <span class="comment">/**</span>
+ 51 <span class="comment">     * </span><span class="ST0">Setter</span> <span class="ST0">function</span> <span class="ST0">for</span> <span class="ST0">the</span> <span class="ST0">value</span> <span class="ST0">instance</span> <span class="ST0">variable</span>
+ 52 <span class="comment">     * </span><span class="ST0">@param</span> value <span class="comment">The</span> <span class="comment">new</span> <span class="comment">value</span> <span class="comment">for</span> <span class="comment">this</span><span class="comment">.</span><span class="comment">value</span>
+ 53      <span class="comment">*/</span>
+ 54     @Override
+ 55     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">setValue</span>(V value) {
+ 56         <span class="literal">this</span>.<span class="ST2">value</span> = value;
+ 57     }
+ 58 
+ 59     <span class="comment">/**</span>
+ 60 <span class="comment">     * </span><span class="ST0">Returns</span> <span class="ST0">if</span> <span class="ST0">this</span> <span class="ST0">current</span> <span class="ST0">node</span> <span class="ST0">is</span> <span class="ST0">empty</span><span class="ST0">.</span> 
+ 61 <span class="comment">     * </span><span class="comment">An</span> <span class="comment">empty</span> <span class="comment">node</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">conceptual</span> <span class="comment">equivalent</span> <span class="comment">of</span>
+ 62 <span class="comment">     * </span><span class="comment">a</span> <span class="comment">non</span> <span class="comment">existent</span> <span class="comment">node</span><span class="comment">.</span>
+ 63 <span class="comment">     * </span><span class="comment">An</span> <span class="comment">empty</span> <span class="comment">node</span> <span class="comment">entails</span> <span class="comment">having</span> <span class="comment">a</span> <span class="comment">null</span> <span class="comment">key</span><span class="comment">,</span>
+ 64 <span class="comment">     * </span><span class="comment">which</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">default</span> <span class="comment">value</span> <span class="comment">when</span> <span class="comment">the</span> <span class="comment">constructor</span> <span class="comment">is</span> <span class="comment">called</span><span class="comment">.</span>
+ 65 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">is</span> <span class="comment">this</span> <span class="comment">node</span> <span class="comment">empty</span>
+ 66      <span class="comment">*/</span>
+ 67     @Override
+ 68     <span class="literal">public</span> <span class="literal">boolean</span> <span class="ST1">empty</span>() {
+ 69         <span class="literal">return</span> <span class="ST2">key</span> == <span class="literal">null</span>;
+ 70     }
+ 71     
+ 72     <span class="comment">/**</span>
+ 73 <span class="comment">     * </span><span class="ST0">Gets</span> <span class="ST0">the</span> <span class="ST0">greater</span> <span class="ST0">of</span> <span class="ST0">two</span> <span class="ST0">integers</span>
+ 74 <span class="comment">     * </span><span class="ST0">@param</span> a
+ 75 <span class="comment">     * </span><span class="ST0">@param</span> b
+ 76 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">the</span> <span class="comment">greater</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">and</span> <span class="comment">b</span> 
+ 77      <span class="comment">*/</span>
+ 78     <span class="literal">private</span> <span class="literal">int</span> <span class="ST1">max</span>(<span class="literal">int</span> a, <span class="literal">int</span> b) { <span class="literal">return</span> a &gt; b ? a : b; }
+ 79     
+ 80     <span class="comment">/**</span>
+ 81 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">finds</span> <span class="ST0">the</span> <span class="ST0">height</span> <span class="ST0">of</span> <span class="ST0">the</span> <span class="ST0">current</span> <span class="ST0">tree</span><span class="ST0">.</span>
+ 82 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">the</span> <span class="comment">height</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">current</span> <span class="comment">tree</span> 
+ 83      <span class="comment">*/</span>
+ 84     @Override
+ 85     <span class="literal">public</span> <span class="literal">int</span> <span class="ST1">height</span>() {
+ 86         <span class="literal">if</span> (empty()) {
+ 87             <span class="literal">return</span> 0;
+ 88         } <span class="literal">else</span> {
+ 89             <span class="literal">return</span> 1 + max(<span class="ST2">left</span>.height(), <span class="ST2">right</span>.height());
+ 90         }
+ 91     }
+ 92 
+ 93     <span class="comment">/**</span>
+ 94 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">prints</span> <span class="ST0">the</span> <span class="ST0">elements</span> <span class="ST0">in</span> <span class="ST0">the</span> <span class="ST0">tree</span> <span class="ST0">in</span> <span class="ST0">preorder</span><span class="ST0"> (</span><span class="ST0">i</span><span class="ST0">.</span><span class="ST0">e</span> 
+ 95 <span class="comment">     * </span><span class="ST0">visit</span><span class="ST0">, </span><span class="ST0">left</span><span class="ST0">.</span><span class="ST0">preorder</span><span class="ST0">(), </span><span class="ST0">right</span><span class="ST0">.</span><span class="ST0">preorder</span><span class="ST0">() </span><span class="ST0">.</span>
+ 96      <span class="comment">*/</span>
+ 97     @Override
+ 98     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">preorder</span>() {
+ 99         <span class="literal">if</span> (!empty()) {
+100             visit();
+101             <span class="ST2">left</span>.preorder();
+102             <span class="ST2">right</span>.preorder();
+103         }
+104     }
+105     
+106     <span class="comment">/**</span>
+107 <span class="comment">     * </span><span class="ST0">Prints</span> <span class="ST0">the</span> <span class="ST0">value</span> <span class="ST0">and</span> <span class="ST0">key</span> <span class="ST0">of</span> <span class="ST0">the</span> <span class="ST0">current</span> <span class="ST0">node</span><span class="ST0">.</span>
+108      <span class="comment">*/</span>
+109     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">visit</span>() {
+110         <span class="literal">if</span> (<span class="ST2">value</span> == <span class="literal">null</span>) {
+111             System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">[</span><span class="string">&quot;</span> + <span class="ST2">key</span> + <span class="string">&quot;</span><span class="string">:</span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">---</span><span class="string">&quot;</span> + <span class="string">&quot;</span><span class="string">]</span><span class="string">&quot;</span> );
+112         } <span class="literal">else</span> {
+113             System.<span class="ST3">out</span>.println(<span class="string">&quot;</span><span class="string">[</span><span class="string">&quot;</span> + <span class="ST2">key</span> + <span class="string">&quot;</span><span class="string">:</span><span class="string">&quot;</span> + <span class="ST2">value</span> + <span class="string">&quot;</span><span class="string">]</span><span class="string">&quot;</span> );
+114         }
+115     }
+116     
+117     <span class="comment">/**</span>
+118 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">prints</span> <span class="ST0">the</span> <span class="ST0">elements</span> <span class="ST0">in</span> <span class="ST0">the</span> <span class="ST0">tree</span> <span class="ST0">in</span> <span class="ST0">inorder</span><span class="ST0"> (</span><span class="ST0">i</span><span class="ST0">.</span><span class="ST0">e</span> 
+119 <span class="comment">     * </span><span class="ST0">left</span><span class="ST0">.</span><span class="ST0">inorder</span><span class="ST0">(), </span><span class="ST0">visit</span><span class="ST0">, </span><span class="ST0">right</span><span class="ST0">.</span><span class="ST0">inorder</span><span class="ST0">() </span><span class="ST0">.</span>
+120      <span class="comment">*/</span>
+121     @Override
+122     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">inorder</span>() {
+123         <span class="literal">if</span> (!empty()) {
+124             <span class="ST2">left</span>.inorder();
+125             visit();
+126             <span class="ST2">right</span>.inorder();
+127         }
+128     }
+129 
+130     <span class="comment">/**</span>
+131 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">prints</span> <span class="ST0">the</span> <span class="ST0">elements</span> <span class="ST0">in</span> <span class="ST0">the</span> <span class="ST0">tree</span> <span class="ST0">in</span> <span class="ST0">postorder</span><span class="ST0"> (</span><span class="ST0">i</span><span class="ST0">.</span><span class="ST0">e</span> 
+132 <span class="comment">     * </span><span class="ST0">left</span><span class="ST0">.</span><span class="ST0">postorder</span><span class="ST0">(), </span><span class="ST0">right</span><span class="ST0">.</span><span class="ST0">postorder</span><span class="ST0">(), </span><span class="ST0">visit</span><span class="ST0">.</span>
+133      <span class="comment">*/</span>
+134     @Override
+135     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">postorder</span>() {
+136         <span class="literal">if</span> (!empty()) {
+137             <span class="ST2">left</span>.postorder();
+138             <span class="ST2">right</span>.postorder();
+139             visit();
+140         }
+141     }
+142 
+143     <span class="comment">/**</span>
+144 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">adds</span> <span class="ST0">a</span> <span class="ST0">given</span> <span class="ST0">key</span> <span class="ST0">and</span> <span class="ST0">value</span> <span class="ST0">to</span> <span class="ST0">the</span> <span class="ST0">node</span> <span class="ST0">specified</span> <span class="ST0">by</span> <span class="ST0">dir</span>
+145 <span class="comment">     * </span><span class="ST0">@param</span> key <span class="comment">The</span> <span class="comment">key</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+146 <span class="comment">     * </span><span class="ST0">@param</span> value <span class="comment">The</span> <span class="comment">value</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+147 <span class="comment">     * </span><span class="ST0">@param</span> dir <span class="comment">The</span> <span class="comment">directory</span> <span class="comment">to</span> <span class="comment">place</span> <span class="comment">the</span> <span class="comment">new</span> <span class="comment">node</span> <span class="comment">in</span><span class="comment">, </span><span class="comment">specified</span> <span class="comment">by</span> <span class="comment">a</span> <span class="comment">string</span>
+148 <span class="comment">     *              </span><span class="comment">containing</span> <span class="comment">L</span> <span class="comment">or</span> <span class="comment">R</span> <span class="comment">depending</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">path</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">traversed</span>
+149 <span class="comment">     * </span><span class="ST0">@throws</span> <span class="comment">BinaryTreeCreationException</span> <span class="comment">Throws</span> <span class="comment">this</span> <span class="comment">exception</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">path</span> <span class="comment">is</span> <span class="comment">invalid</span>
+150      <span class="comment">*/</span>
+151     @Override
+152     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">addLR</span>(K key, V value, String dir) <span class="literal">throws</span> BinaryTreeCreationException {
+153         <span class="literal">try</span> {
+154             <span class="literal">if</span> (dir.equals(<span class="string">&quot;&quot;</span>)) {
+155                 sprout(key, value);
+156             } <span class="literal">else</span> <span class="literal">if</span> (dir.charAt(0) == <span class="string">&#39;</span><span class="string">L</span><span class="string">&#39;</span> || dir.charAt(0) == <span class="string">&#39;</span><span class="string">l</span><span class="string">&#39;</span>) {
+157                 <span class="ST2">left</span>.addLR(key, value, dir.substring(1));
+158             } <span class="literal">else</span> <span class="literal">if</span> (dir.charAt(0) == <span class="string">&#39;</span><span class="string">R</span><span class="string">&#39;</span> || dir.charAt(0) == <span class="string">&#39;</span><span class="string">r</span><span class="string">&#39;</span>) {
+159                 <span class="ST2">right</span>.addLR(key, value, dir.substring(1));
+160             } <span class="literal">else</span> {
+161                 <span class="literal">throw</span> <span class="literal">new</span> BinaryTreeCreationException(<span class="string">&quot;</span><span class="string">Fug</span><span class="string">&quot;</span>);
+162             }
+163         } <span class="literal">catch</span>(BinaryTreeCreationException e) {
+164             <span class="literal">throw</span> e;
+165         }
+166     }
+167 
+168     <span class="comment">/**</span>
+169 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">adds</span> <span class="ST0">a</span> <span class="ST0">given</span> <span class="ST0">key</span> <span class="ST0">and</span> <span class="ST0">value</span> <span class="ST0">non</span> <span class="ST0">determinantly</span> <span class="ST0">to</span>
+170 <span class="comment">     * </span><span class="ST0">@param</span> key   <span class="comment">The</span> <span class="comment">key</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+171 <span class="comment">     * </span><span class="ST0">@param</span> value <span class="comment">The</span> <span class="comment">value</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+172      <span class="comment">*/</span>
+173     @Override
+174     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">addND</span>(K key, V value) {
+175         <span class="literal">if</span> (empty()) {
+176             sprout(key, value);
+177         } <span class="literal">else</span> <span class="literal">if</span> (Math.<span class="ST4">random</span>() &lt; 0.5) {
+178             <span class="ST2">left</span>.addND(key, value);
+179         } <span class="literal">else</span> {
+180             <span class="ST2">right</span>.addND(key, value);
+181         }
+182     }
+183 
+184     <span class="comment">/**</span>
+185 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">adds</span> <span class="ST0">a</span> <span class="ST0">given</span> <span class="ST0">key</span> <span class="ST0">and</span> <span class="ST0">value</span> <span class="ST0">to</span> <span class="ST0">the</span> <span class="ST0">tree</span> <span class="ST0">as</span> <span class="ST0">a</span> <span class="ST0">binary</span> <span class="ST0">search</span> <span class="ST0">tree</span>
+186 <span class="comment">     * </span><span class="ST0">@param</span> key <span class="comment">the</span> <span class="comment">key</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+187 <span class="comment">     * </span><span class="ST0">@param</span> value <span class="comment">the</span> <span class="comment">value</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">added</span>
+188 <span class="comment">     * </span><span class="ST0">@throws</span> <span class="comment">BinaryTreeCreationException</span> <span class="comment">This</span> <span class="comment">is</span> <span class="comment">thrown</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">value</span> <span class="comment">is</span> <span class="comment">equal</span> <span class="comment">to</span> <span class="comment">another</span> <span class="comment">node</span> 
+189      <span class="comment">*/</span>
+190     @Override
+191     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">addST</span>(K key, V value) <span class="literal">throws</span> BinaryTreeCreationException {
+192         <span class="literal">if</span> (empty()) {
+193             sprout(key, value);
+194         } <span class="literal">else</span> {
+195             Comparable cey  = (Comparable) key;
+196             Comparable t    = (Comparable) <span class="literal">this</span>.<span class="ST2">key</span>;
+197             <span class="literal">if</span> (cey.compareTo(t) &lt; 0) {
+198                 <span class="ST2">left</span>.addST(key, value);
+199             } <span class="literal">else</span> <span class="literal">if</span> (cey.compareTo(t) &gt; 0) {
+200                 <span class="ST2">right</span>.addST(key, value);
+201             } <span class="literal">else</span> {
+202                 <span class="literal">throw</span> <span class="literal">new</span> BinaryTreeCreationException(<span class="string">&quot;</span><span class="string">fug</span><span class="string">&quot;</span>);
+203             }
+204         }
+205     }
+206 
+207     <span class="comment">/**</span>
+208 <span class="comment">     * </span><span class="ST0">Gets</span> <span class="ST0">the</span> <span class="ST0">value</span> <span class="ST0">with</span> <span class="ST0">the</span> <span class="ST0">given</span> <span class="ST0">key</span>
+209 <span class="comment">     * </span><span class="ST0">@param</span> key <span class="comment">they</span> <span class="comment">key</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">find</span> <span class="comment">the</span> <span class="comment">value</span>
+210 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">The</span> <span class="comment">value</span> <span class="comment">with</span> <span class="comment">key</span>
+211      <span class="comment">*/</span>
+212     @Override
+213     <span class="literal">public</span> V <span class="ST1">get</span>(K key) {
+214         <span class="literal">return</span> find(key).value();
+215     }
+216 
+217     <span class="comment">/**</span>
+218 <span class="comment">     * </span><span class="ST0">Recursively</span> <span class="ST0">finds</span> <span class="ST0">the</span> <span class="ST0">value</span> <span class="ST0">with</span> <span class="ST0">the</span> <span class="ST0">given</span> <span class="ST0">key</span>
+219 <span class="comment">     * </span><span class="ST0">@param</span> key <span class="comment">the</span> <span class="comment">key</span> <span class="comment">to</span> <span class="comment">search</span> <span class="comment">for</span>
+220 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">The</span> <span class="comment">tree</span> <span class="comment">with</span> <span class="comment">the</span> <span class="comment">given</span> <span class="comment">key</span>
+221      <span class="comment">*/</span>
+222     @Override
+223     <span class="literal">public</span> BinaryTreeADT&lt;K, V&gt; <span class="ST1">find</span>(K key) {
+224         <span class="literal">if</span> (empty()) {
+225             <span class="literal">return</span> <span class="literal">null</span>;
+226         } <span class="literal">else</span> <span class="literal">if</span> (<span class="literal">this</span>.<span class="ST2">key</span> == key) {
+227             <span class="literal">return</span> <span class="literal">this</span>;
+228         } <span class="literal">else</span> {
+229             BinaryTreeADT&lt;K, V&gt; l = <span class="ST2">left</span>.find(key);
+230             <span class="literal">if</span> (l != <span class="literal">null</span>) <span class="literal">return</span> l;
+231             BinaryTreeADT&lt;K, V&gt; r = <span class="ST2">right</span>.find(key);
+232             <span class="literal">if</span> (l != <span class="literal">null</span>) <span class="literal">return</span> r;
+233             <span class="literal">return</span> <span class="literal">null</span>;
+234         }
+235     }
+236     
+237     <span class="comment">/**</span>
+238 <span class="comment">     * </span><span class="ST0">Checks</span> <span class="ST0">if</span> <span class="ST0">a</span> <span class="ST0">node</span> <span class="ST0">with</span> <span class="ST0">the</span> <span class="ST0">given</span> <span class="ST0">key</span> <span class="ST0">exists</span> <span class="ST0">in</span> <span class="ST0">the</span> <span class="ST0">current</span> <span class="ST0">ree</span>
+239 <span class="comment">     * </span><span class="ST0">@param</span> key <span class="comment">the</span> <span class="comment">node</span> <span class="comment">to</span> <span class="comment">check</span> <span class="comment">for</span> <span class="comment">presence</span>
+240 <span class="comment">     * </span><span class="ST0">@return</span> <span class="comment">If</span> <span class="comment">the</span> <span class="comment">current</span> <span class="comment">tree</span> <span class="comment">contains</span> <span class="comment">a</span> <span class="comment">node</span> <span class="comment">with</span> <span class="comment">the</span> <span class="comment">given</span> <span class="comment">key</span>
+241      <span class="comment">*/</span>
+242     @Override
+243     <span class="literal">public</span> <span class="literal">boolean</span> <span class="ST1">member</span>(K key) {
+244         <span class="literal">return</span> find(key) != <span class="literal">null</span>;
+245     }
+246 
+247     <span class="comment">/**</span>
+248 <span class="comment">     * </span><span class="ST0">Makes</span> <span class="ST0">the</span> <span class="ST0">current</span> <span class="ST0">node</span><span class="ST0"> (</span><span class="ST0">which</span> <span class="ST0">should</span> <span class="ST0">be</span> <span class="ST0">empty</span><span class="ST0">) </span><span class="ST0">into</span> <span class="ST0">a</span> 
+249 <span class="comment">     * </span><span class="ST0">node</span> <span class="ST0">with</span> <span class="ST0">the</span> <span class="ST0">given</span> <span class="ST0">key</span> <span class="ST0">and</span> <span class="ST0">value</span>
+250 <span class="comment">     * </span><span class="ST0">@param</span> key   <span class="comment">The</span> <span class="comment">key</span> 
+251 <span class="comment">     * </span><span class="ST0">@param</span> value <span class="comment">The</span> <span class="comment">value</span>
+252      <span class="comment">*/</span>
+253     @Override
+254     <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">sprout</span>(K key, V value) {
+255         <span class="literal">this</span>.<span class="ST2">key</span> = key;
+256         <span class="literal">this</span>.<span class="ST2">value</span> = value;
+257         <span class="literal">this</span>.<span class="ST2">left</span> = <span class="literal">new</span> BinaryTree&lt;&gt;();
+258         <span class="literal">this</span>.<span class="ST2">right</span> = <span class="literal">new</span> BinaryTree&lt;&gt;();
+259     }
+260     
+261 }
+262 
+</pre></body>
+</html>
