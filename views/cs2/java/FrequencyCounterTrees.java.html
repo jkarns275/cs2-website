@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>FrequencyCounterTrees.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+pre {color: #000000; background-color: #ffffff; font-family: Fira Code Retina}
+table {color: #000000; background-color: #e9e8e2; font-family: Fira Code Retina}
+.ST4 {; font-family: Fira Code Retina; font-weight: bold; font-style: italic}
+.ST5 {color: #009900; ; font-family: Fira Code Retina; font-style: italic}
+.ST7 {; font-family: Fira Code Retina; font-style: italic}
+.ST2 {color: #969696; ; font-family: Fira Code Retina; font-weight: bold}
+.ST3 {; font-family: Fira Code Retina; font-weight: bold}
+.ST0 {color: #969696; }
+.guarded {}
+.ST1 {color: #0000e6; }
+.ST6 {color: #ce7b00; }
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">FrequencyCounterTrees.java</td></tr></table>
+<pre>
+ 1 <span class="ST0">/*</span>
+ 2 <span class="ST0"> </span>
+ 3 <span class="ST0"> *</span>
+ 4 <span class="ST0"> * </span>
+ 5 <span class="ST0"> */</span>
+ 6 <span class="ST1">package</span> <span class="guarded">trees</span><span class="guarded">;</span>
+ 7
+ 8 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">io</span><span class="guarded">.</span><span class="guarded">File</span><span class="guarded">;</span>
+ 9 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">util</span><span class="guarded">.</span><span class="guarded">HashMap</span><span class="guarded">;</span>
+10 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">util</span><span class="guarded">.</span><span class="guarded">Map</span><span class="guarded">;</span>
+11 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">util</span><span class="guarded">.</span><span class="guarded">Scanner</span><span class="guarded">;</span>
+12 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">util</span><span class="guarded">.</span><span class="guarded">logging</span><span class="guarded">.</span><span class="guarded">Level</span><span class="guarded">;</span>
+13 <span class="ST1">import</span> <span class="guarded">java</span><span class="guarded">.</span><span class="guarded">util</span><span class="guarded">.</span><span class="guarded">logging</span><span class="guarded">.</span><span class="guarded">Logger</span><span class="guarded">;</span>
+14
+15 <span class="ST0">/**</span>
+16 <span class="ST0"> *</span>
+17 <span class="ST0"> * </span><span class="ST2">@author</span> <span class="ST0">jkarn</span>
+18  <span class="ST0">*/</span>
+19 <span class="ST1">public</span> <span class="ST1">class</span> <span class="ST3">FrequencyCounterTrees</span> <span class="guarded">{</span>
+20     <span class="ST1">public</span> <span class="ST1">static</span> <span class="ST1">void</span> <span class="ST4">main</span><span class="guarded">(</span><span class="guarded">String</span><span class="guarded">[</span><span class="guarded">]</span> <span class="guarded">args</span><span class="guarded">)</span> <span class="guarded">{</span>
+21         <span class="guarded">BinaryTree</span><span class="guarded">&lt;</span><span class="guarded">String</span><span class="guarded">,</span> <span class="guarded">Integer</span><span class="guarded">&gt;</span> <span class="guarded">frequencies</span> <span class="guarded">=</span> <span class="ST1">new</span> <span class="guarded">BinaryTree</span><span class="guarded">&lt;</span><span class="guarded">&gt;</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+22         <span class="guarded">Scanner</span> <span class="guarded">input</span> <span class="guarded">=</span> <span class="ST1">new</span> <span class="guarded">Scanner</span><span class="guarded">(</span><span class="guarded">System</span><span class="guarded">.</span><span class="ST5">in</span><span class="guarded">)</span><span class="guarded">;</span>
+23         <span class="guarded">System</span><span class="guarded">.</span><span class="ST5">out</span><span class="guarded">.</span><span class="guarded">print</span><span class="guarded">(</span><span class="ST6">&quot;</span><span class="ST6">&gt;&gt;&gt; Filename? </span><span class="ST6">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+24         <span class="guarded">String</span> <span class="guarded">filename</span> <span class="guarded">=</span> <span class="guarded">input</span><span class="guarded">.</span><span class="guarded">nextLine</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+25
+26         <span class="ST1">try</span> <span class="guarded">{</span>
+27             <span class="guarded">Scanner</span> <span class="guarded">fileInput</span> <span class="guarded">=</span> <span class="ST1">new</span> <span class="guarded">Scanner</span><span class="guarded">(</span><span class="ST1">new</span> <span class="guarded">File</span><span class="guarded">(</span><span class="guarded">filename</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">;</span>
+28             <span class="guarded">input</span><span class="guarded">.</span><span class="guarded">forEachRemaining</span><span class="guarded">(</span><span class="guarded">(</span><span class="guarded">key</span><span class="guarded">)</span> <span class="guarded">-&gt;</span> <span class="guarded">{</span>
+29                 <span class="ST1">if</span> <span class="guarded">(</span><span class="guarded">frequencies</span><span class="guarded">.</span><span class="guarded">find</span><span class="guarded">(</span><span class="guarded">key</span><span class="guarded">)</span> <span class="guarded">!=</span> <span class="ST1">null</span><span class="guarded">)</span> <span class="guarded">{</span>
+30                     <span class="guarded">frequencies</span><span class="guarded">.</span><span class="guarded">find</span><span class="guarded">(</span><span class="guarded">key</span><span class="guarded">)</span><span class="guarded">.</span><span class="guarded">setValue</span><span class="guarded">(</span><span class="guarded">frequencies</span><span class="guarded">.</span><span class="guarded">get</span><span class="guarded">(</span><span class="guarded">key</span><span class="guarded">)</span> <span class="guarded">+</span> <span class="guarded">1</span><span class="guarded">)</span><span class="guarded">;</span>
+31                 <span class="guarded">}</span> <span class="ST1">else</span>
+32                     <span class="ST1">try</span> <span class="guarded">{</span>
+33                         <span class="guarded">frequencies</span><span class="guarded">.</span><span class="guarded">addST</span><span class="guarded">(</span><span class="guarded">key</span><span class="guarded">,</span> <span class="guarded">1</span><span class="guarded">)</span><span class="guarded">;</span>
+34                     <span class="guarded">}</span> <span class="ST1">catch</span> <span class="guarded">(</span><span class="guarded">BinaryTreeCreationException</span> <span class="guarded">ex</span><span class="guarded">)</span> <span class="guarded">{</span>
+35                         <span class="guarded">Logger</span><span class="guarded">.</span><span class="ST7">getLogger</span><span class="guarded">(</span><span class="guarded">FrequencyCounterTrees</span><span class="guarded">.</span><span class="ST1">class</span><span class="guarded">.</span><span class="guarded">getName</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">)</span><span class="guarded">.</span><span class="guarded">log</span><span class="guarded">(</span><span class="guarded">Level</span><span class="guarded">.</span><span class="ST5">SEVERE</span><span class="guarded">,</span> <span class="ST1">null</span><span class="guarded">,</span> <span class="guarded">ex</span><span class="guarded">)</span><span class="guarded">;</span>
+36                     <span class="guarded">}</span>
+37             <span class="guarded">}</span><span class="guarded">)</span><span class="guarded">;</span>
+38         <span class="guarded">}</span> <span class="ST1">catch</span> <span class="guarded">(</span><span class="guarded">Exception</span> <span class="guarded">e</span><span class="guarded">)</span> <span class="guarded">{</span>
+39             <span class="guarded">System</span><span class="guarded">.</span><span class="ST5">out</span><span class="guarded">.</span><span class="guarded">println</span><span class="guarded">(</span><span class="ST6">&quot;</span><span class="ST6">Error :(</span><span class="ST6">&quot;</span><span class="guarded">)</span><span class="guarded">;</span>
+40             <span class="guarded">e</span><span class="guarded">.</span><span class="guarded">printStackTrace</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+41         <span class="guarded">}</span>
+42         <span class="guarded">frequencies</span><span class="guarded">.</span><span class="guarded">inorder</span><span class="guarded">(</span><span class="guarded">)</span><span class="guarded">;</span>
+43     <span class="guarded">}</span>
+44 <span class="guarded">}</span>
+45
+</pre></body>
+</html>
